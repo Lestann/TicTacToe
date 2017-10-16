@@ -1,4 +1,5 @@
 # TicTacToe
+[![Build Status](https://travis-ci.org/kristjaningi/TicTacToe.svg?branch=master)](https://travis-ci.org/kristjaningi/TicTacToe)
 
 ### Members:
 - Fannar Þór Ragnarsson
