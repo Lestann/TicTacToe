@@ -52,6 +52,7 @@ public class Board
 	{
 		int horizontal = 0;
 		int vertical = 0;
+		int diagnallr = 0;
 		char player = getSymbol(p.getSymbol());
 		for(int i = 0; i < constSize; i++)
 		{
@@ -61,7 +62,8 @@ public class Board
 				else { horizontal = 0; }
 				if (board[j][i] == player) vertical++;
 				else { vertical = 0; }
-				if(horizontal == constSize || vertical == constSize) return true;
+				if (i == j && board[i][j] == player) diagnallr++;
+				if(horizontal == constSize || vertical == constSize || diagnallr == constSize) return true;
 			}
 		}
 		return false;
