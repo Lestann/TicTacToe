@@ -10,3 +10,6 @@
 - Steinar Haraldsson
 - Sóley Ásgeirsdóttir
 - Vigdís Birna Þorsteinsdóttir
+
+###About
+Ágætis verkefni.. aðalega gert til að testa push.
