@@ -5,11 +5,4 @@ import static org.junit.Assert.*;
 
 public class BoardTest{
 
-	@Test
-	public void createAndPrintBoard()
-	{
-		
-	}
-
-
 }
