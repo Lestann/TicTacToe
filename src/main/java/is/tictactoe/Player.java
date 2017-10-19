@@ -4,9 +4,11 @@ public class Player {
 
   private Symbol symbol;
   private int score;
+  private String name;
 
-  public Player(Symbol symbol)
+  public Player(String name, Symbol symbol)
   {
+    this.name = name;
     this.symbol = symbol;
     this.score = 0;
   }
@@ -19,6 +21,11 @@ public class Player {
   public int getScore()
   {
     return score;
+  }
+
+  public String getName()
+  {
+    return name;
   }
 
 }
