@@ -28,4 +28,8 @@ public class Player {
     return name;
   }
 
+  public void incrementScore()
+  {
+    score++;
+  }
 }
