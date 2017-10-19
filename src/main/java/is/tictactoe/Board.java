@@ -50,15 +50,18 @@ public class Board
 
 	public boolean checkWinner(Player p)
 	{
-		int counter = 0;
+		int horizontal = 0;
+		int vertical = 0;
 		char player = getSymbol(p.getSymbol());
 		for(int i = 0; i < constSize; i++)
 		{
 			for(int j = 0; j < constSize; j++)
 			{
-				if (board[i][j] == player){ counter++; }
-				else { counter = 0; }
-				if(counter == constSize) return true;
+				if (board[i][j] == player){ horizontal++; }
+				else { horizontal = 0; }
+				if (board[j][i] == player) vertical++;
+				else { vertical = 0; }
+				if(horizontal == constSize || vertical == constSize) return true;
 			}
 		}
 		return false;
