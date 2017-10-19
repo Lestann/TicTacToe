@@ -17,3 +17,4 @@ HAlló
 ###About
 Ágætis verkefni.. aðalega gert til að testa push.
 
+Hæmm
