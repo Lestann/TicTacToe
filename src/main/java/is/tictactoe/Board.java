@@ -1,5 +1,6 @@
 package is.ru.tictactoe;
 
+
 public class Board
 {
 
@@ -31,12 +32,12 @@ public class Board
 	public void changeBoard(Symbol symbol, int position)
 	{
 		int count = 1;
-		char player;
+		char player = 'X';
 
 		if (symbol == Symbol.CIRCLE) {
 			player = 'O';
 		}
-		else if (symbol == Symbol.CROSS) {
+		else {
 			player = 'X';
 		}
 
