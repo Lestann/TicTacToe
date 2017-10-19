@@ -1,10 +1,10 @@
-package is.ru.tictactoe
+package is.ru.tictactoe;
 
 public class Board
 {
 
 	char[][] board;
-	private final constSize = 3; 
+	private final int constSize = 3; 
 
 	public Board() {
 		board = new char[constSize][constSize];
@@ -21,7 +21,7 @@ public class Board
 	public void print() {
 		
 		for (int i = 0; i < 3; i++) {
-			for (int j = 0, j < 3; j++) {
+			for (int j = 0; j < 3; j++) {
 				System.out.print(board[i][j] + " ");	
 			}
 			System.out.println();
