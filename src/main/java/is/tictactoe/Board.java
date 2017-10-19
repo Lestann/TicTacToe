@@ -22,17 +22,23 @@ public class Board
 		
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0, j < 3; j++) {
-				system.out.print(board[i][j] + " ");	
+				System.out.print(board[i][j] + " ");	
 			}
-			system.out.println();
+			System.out.println();
 		}
 	} 
 
-
-
-	/*public void changeBoard(Symbol symbol, int position)
+	public void changeBoard(Symbol symbol, int position)
 	{
 		int count = 1;
+		char player;
+
+		if (symbol == Symbol.CIRCLE) {
+			player = 'O';
+		}
+		else if (symbol == Symbol.CROSS) {
+			player = 'X';
+		}
 
 		for(int i = 0; i < 3; i++)
 		{
@@ -40,12 +46,12 @@ public class Board
 			{
 				if(position == count)
 				{
-					board[i][j] = ;
+					board[i][j] = player;
 					return;
 				}
 				count++;
 			}
 		}
 
-	}*/
+	}
 }
