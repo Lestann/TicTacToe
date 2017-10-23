@@ -10,4 +10,8 @@ public class TicTacToe {
     this.player1 = player1;
     this.player2 = player2;
   }
+
+  public static void main(String[] args){
+    System.out.println("okei etta virkar");
+  }
 }
