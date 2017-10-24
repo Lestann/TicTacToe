@@ -13,6 +13,17 @@ public class TicTacToe {
     this.player2 = player2;
   }
 
+  private Player switchPlayer(Player player){
+    if(player == player1){
+      player = player2;
+    }
+    else{
+      player = player1;
+    }
+
+    return player;
+  }
+
   private void gameIteration(Player player, Scanner scanner){
     for (int i = 0; i < SIZE*SIZE; i++) {
       System.out.println();
@@ -24,12 +35,7 @@ public class TicTacToe {
       if (board.checkWinner(player)){
         return;
       }
-      if(player == player1){
-        player = player2;
-      }
-      else{
-        player = player1;
-      }
+      player = switchPlayer(player);
     }
   }
 
