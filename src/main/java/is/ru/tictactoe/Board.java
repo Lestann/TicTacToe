@@ -13,7 +13,7 @@ public class Board
 
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				board[i][j] = (char) count;
+				board[i][j] = (char)(count+48);
 				count++;
 			}
 		}
@@ -50,13 +50,14 @@ public class Board
 
 	public boolean checkWinner(Player p)
 	{
-		int horizontal = 0;
-		int vertical = 0;
+
 		int diagnallr = 0;
 		int diagnalrl = 0;
 		char player = getSymbol(p.getSymbol());
 		for(int i = 0; i < constSize; i++)
 		{
+			int horizontal = 0;
+			int vertical = 0;
 			for(int j = 0; j < constSize; j++)
 			{
 				if (board[i][j] == player){ horizontal++; }
