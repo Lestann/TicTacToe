@@ -13,21 +13,26 @@ public class TicTacToe {
     this.player2 = player2;
   }
 
+  private void gameIteration(Player player, Scanner scanner){
+    for (int i = 0; i < SIZE*SIZE; i++) {
+      System.out.println();
+      board.print();
+      System.out.println();
+      System.out.print(player.getName() + ", its your move: ");
+      int input = scanner.nextInt();
+      board.changeBoard(player.getSymbol(), input);
+      if (board.checkWinner(player)){
+        return;
+      }
+    }
+  }
+
   public void play(Scanner scanner) {
     boolean continueGame = true;
     Player player = player1;
     while (continueGame) {
-      for (int i = 0; i < SIZE*SIZE; i++) {
-        System.out.println();
-        board.print();
-        System.out.println();
-        System.out.print(player.getName() + ", its your move: ");
-        int input = scanner.nextInt();
-        board.changeBoard(player.getSymbol(), input);
-        if (board.checkWinner(player)){
-          break;
-        }     
-      }
+      gameIteration(player, scanner);
+      board = new Board();
     }
   }
 
