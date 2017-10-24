@@ -6,10 +6,12 @@ import spark.servlet.SparkApplication;
 
 public class TicWeb implements SparkApplication {
   public static void main(String[] args) {
+    staticFileLocation("/public");
+    SparkApplication tictactoe = new TicWeb();
     port(getHerokuPort());
 
-    get("/", (req, res) -> {
-      return "Hello World!";
+    post("/newGame", (req, res) -> {
+      return true;
     });
   }
 
