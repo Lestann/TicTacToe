@@ -55,4 +55,10 @@ public class BoardTest{
     assertEquals(false, board.checkWinner(player));
   }
 
+  @Test
+  public void testIsTaken () {
+    Board board = new Board();
+    assertEquals(false, board.isTaken(2));
+  }
+
 }

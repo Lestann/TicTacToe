@@ -70,4 +70,8 @@ public class Board {
 
 		return 'X';
 	}
+
+	public boolean isTaken (int position) {
+		return true;
+	}
 }
