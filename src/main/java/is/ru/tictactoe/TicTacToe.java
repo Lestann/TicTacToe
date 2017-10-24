@@ -24,6 +24,12 @@ public class TicTacToe {
       if (board.checkWinner(player)){
         return;
       }
+      if(player == player1){
+        player = player2;
+      }
+      else{
+        player = player1;
+      }
     }
   }
 
@@ -45,7 +51,7 @@ public class TicTacToe {
       System.out.println();
       System.out.print("Please enter a name for player2: ");
       String p2Name = getName(scanner);
-      Player player2 = new Player(p1Name, Symbol.CROSS);
+      Player player2 = new Player(p2Name, Symbol.CIRCLE);
       TicTacToe game = new TicTacToe(player1, player2);
       game.play(scanner);
       scanner.close();
