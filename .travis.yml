@@ -1,3 +1,11 @@
 language: java
 jdk:
   - oraclejdk8
+
+notifications:
+  email:
+    recipients:
+      - kristjang15@ru.is
+
+    on_success: always
+    on_failure: always
