@@ -45,4 +45,12 @@ public class BoardTest{
     assertEquals(true, board.checkWinner(player));
   }
 
+  @Test
+ public void checkValidMove()
+ {
+   Board board = new Board();
+   assertEquals(false, board.checkValidMove(20));
+ }
+
 }
+

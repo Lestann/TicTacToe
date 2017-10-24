@@ -80,4 +80,8 @@ public class Board
 			return 'X';
 		}
 	}
+
+	public boolean checkValidMove(int position) {
+		return true;
+	} 
 }
