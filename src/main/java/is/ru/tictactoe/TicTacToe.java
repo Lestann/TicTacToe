@@ -28,14 +28,18 @@ public class TicTacToe {
   public static void main(String[] args){
       Scanner scanner = new Scanner(System.in);
       System.out.print("Please enter a name for player1: ");
-      String p1Name;
-      p1Name = scanner.nextLine();
+      String p1Name = getName(scanner);
       Player player1 = new Player(p1Name, Symbol.CROSS);
       System.out.print("Please enter a name for player2: ");
-      String p2Name;
-      p1Name = scanner.nextLine();
+      String p2Name = getName(scanner);
       scanner.close();
       Player player2 = new Player(p1Name, Symbol.CROSS);
       TicTacToe game = new TicTacToe(player1, player2);
+  }
+
+  private static String getName(Scanner scanner){
+    String name;
+    name = scanner.nextLine();
+    return name;
   }
 }
