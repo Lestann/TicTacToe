@@ -82,6 +82,15 @@ public class Board
 	}
 
 	public boolean checkValidMove(int position) {
-		return true;
+		
+
+		for(int i = 1; i <= 9; i++) {
+
+			if(position == i) {
+				return true;
+			}
+		}
+
+		return false;
 	} 
 }

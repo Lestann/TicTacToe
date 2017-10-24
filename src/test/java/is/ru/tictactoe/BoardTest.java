@@ -50,6 +50,7 @@ public class BoardTest{
  {
    Board board = new Board();
    assertEquals(false, board.checkValidMove(20));
+   assertEquals(true, board.checkValidMove(8));
  }
 
 }
