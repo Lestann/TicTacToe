@@ -11,8 +11,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = "is.ru.tictactoe.TicWeb"
-
+mainClassName = "is.ru.tictactoe.TicTacToeWeb"
 // mainClassName = "is.ru.tictactoe.TicTacToe"
 
 run{
