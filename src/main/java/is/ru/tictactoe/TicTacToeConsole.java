@@ -22,12 +22,28 @@ public class TicTacToeConsole {
     boolean continueGame = true;
     TicTacToe game = new TicTacToe(player1, player2);
     Player player = player1;
+    final int SIZE = game.getSize();
 
     while (continueGame) {
-      gameIteration(player, scanner, game);
-      game.getBoard().print();
+      for (int i = 0; i < (SIZE*SIZE); i++) {
+        printBoard(game.getBoard());
+        System.out.print(player.getName() + ", its your move: ");
+        int input = scanner.nextInt();
+        Player temp = player;
+        player = game.checkWinner(player, input);
+        if(temp == player) {
+          break;
+        }
+      }
+      printBoard(game.getBoard());
+      Player winner = game.restartGame();
 
-      game.restartGame();
+      if(winner != null){
+        System.out.println(winner.getName() + ", you won this round");
+      }
+      else{
+        System.out.println("Well this one was a draw, hopefully someone will win next time");
+      }
       System.out.println("Do you want to play another round (Y/N): ");
       char cont = scanner.next().charAt(0);
       continueGame = cont == 'Y' ? true : false;
@@ -35,25 +51,11 @@ public class TicTacToeConsole {
 
   }
 
-  private static void gameIteration(Player player, Scanner scanner, TicTacToe game){
-    final int SIZE = game.getSize();
-    for (int i = 0; i < (SIZE*SIZE); i++) {
-      System.out.println();
-      game.getBoard().print();
-      System.out.println();
-      System.out.print(player.getName() + ", its your move: ");
-
-      int input = scanner.nextInt();
-      Player temp = player;
-      player = game.checkWinner(player, input);
-      if(temp == player) return;
-
-    }
+  private static void printBoard(Board board) {
+    System.out.println();
+    board.print();
+    System.out.println();
   }
-
-
-
-
   private static String getName(Scanner scanner){
     String name;
     name = scanner.nextLine();

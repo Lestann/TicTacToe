@@ -39,10 +39,8 @@ public class TicTacToe {
     return switchPlayer(player);
   }
 
-  public void restartGame(){
-
+  public Player restartGame(){
     board = new Board();
-
     if(winner != null){
       if(winner == player1){
         player1.incrementScore();
@@ -50,11 +48,10 @@ public class TicTacToe {
       else{
         player2.incrementScore();
       }
-      System.out.println(winner.getName() + ", You won this round");
+      Player player = winner;
       winner = null;
+      return player;
     }
-    else{
-      System.out.println("This round was a draw!");
-    }
+    return winner;
   }
 }
