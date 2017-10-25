@@ -18,32 +18,25 @@ public class TicTacToe {
     return board;
   }
 
+  public int getSize() {
+    return SIZE;
+  }
 
   private Player switchPlayer(Player player){
     if(player == player1){
-      player = player2;
+      return player2;
     }
-    else{
-      player = player1;
-    }
-
-    return player;
+    return player1;
   }
 
-  public void gameIteration(Player player, Scanner scanner){
-    for (int i = 0; i < (SIZE*SIZE); i++) {
-      System.out.println();
-      board.print();
-      System.out.println();
-      System.out.print(player.getName() + ", its your move: ");
-      int input = scanner.nextInt();
-      board.changeBoard(player.getSymbol(), input);
-      if (board.checkWinner(player)){
-        winner = player;
-        return;
-      }
-      player = switchPlayer(player);
+  public Player checkWinner(Player player, int input) {
+
+    board.changeBoard(player.getSymbol(), input);
+    if (board.checkWinner(player)){
+      winner = player;
+      return player;
     }
+    return switchPlayer(player);
   }
 
   public void restartGame(){

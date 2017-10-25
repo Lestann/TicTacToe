@@ -24,7 +24,7 @@ public class TicTacToeConsole {
     Player player = player1;
 
     while (continueGame) {
-      game.gameIteration(player, scanner);
+      gameIteration(player, scanner, game);
       game.getBoard().print();
 
       game.restartGame();
@@ -33,6 +33,22 @@ public class TicTacToeConsole {
       continueGame = cont == 'Y' ? true : false;
     }
 
+  }
+
+  private static void gameIteration(Player player, Scanner scanner, TicTacToe game){
+    final int SIZE = game.getSize();
+    for (int i = 0; i < (SIZE*SIZE); i++) {
+      System.out.println();
+      game.getBoard().print();
+      System.out.println();
+      System.out.print(player.getName() + ", its your move: ");
+
+      int input = scanner.nextInt();
+      Player temp = player;
+      player = game.checkWinner(player, input);
+      if(temp == player) return;
+
+    }
   }
 
 
