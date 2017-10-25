@@ -1,5 +1,4 @@
 package is.ru.tictactoe;
-import java.util.Scanner;
 
 public class TicTacToe {
 
@@ -14,34 +13,33 @@ public class TicTacToe {
     this.winner = null;
   }
 
+  public Board getBoard() {
+    return board;
+  }
+
+  public int getSize() {
+    return SIZE;
+  }
+
   private Player switchPlayer(Player player){
     if(player == player1){
-      player = player2;
+      return player2;
     }
-    else{
-      player = player1;
-    }
-
-    return player;
+    return player1;
   }
 
-  private void gameIteration(Player player, Scanner scanner){
-    for (int i = 0; i < (SIZE*SIZE); i++) {
-      System.out.println();
-      board.print();
-      System.out.println();
-      System.out.print(player.getName() + ", its your move: ");
-      int input = scanner.nextInt();
-      board.changeBoard(player.getSymbol(), input);
-      if (board.checkWinner(player)){
-        winner = player;
-        return;
-      }
-      player = switchPlayer(player);
+  public Player checkWinner(Player player, int input) {
+
+    board.changeBoard(player.getSymbol(), input);
+    if (board.checkWinner(player)){
+      winner = player;
+      return player;
     }
+    return switchPlayer(player);
   }
 
-  public void restartGame(){
+  public Player restartGame(){
+    board = new Board();
     if(winner != null){
       if(winner == player1){
         player1.incrementScore();
@@ -49,46 +47,10 @@ public class TicTacToe {
       else{
         player2.incrementScore();
       }
-      System.out.println(winner.getName() + ", You won this round");
+      Player player = winner;
       winner = null;
+      return player;
     }
-    else{
-      System.out.println("This round was a draw!");
-    }
-  }
-
-  public void play(Scanner scanner) {
-    boolean continueGame = true;
-    Player player = player1;
-    while (continueGame) {
-      gameIteration(player, scanner);
-      board.print();
-      board = new Board();
-      restartGame();
-      System.out.println("Do you want to play another round (Y/N): ");
-      char cont = scanner.next().charAt(0);
-      continueGame = cont == 'Y' ? true : false;
-    }
-  }
-
-  public static void main(String[] args){
-      Scanner scanner = new Scanner(System.in);
-      System.out.println();
-      System.out.print("Please enter a name for player1: ");
-      String p1Name = getName(scanner);
-      Player player1 = new Player(p1Name, Symbol.CROSS);
-      System.out.println();
-      System.out.print("Please enter a name for player2: ");
-      String p2Name = getName(scanner);
-      Player player2 = new Player(p2Name, Symbol.CIRCLE);
-      TicTacToe game = new TicTacToe(player1, player2);
-      game.play(scanner);
-      scanner.close();
-  }
-
-  private static String getName(Scanner scanner){
-    String name;
-    name = scanner.nextLine();
-    return name;
+    return winner;
   }
 }
