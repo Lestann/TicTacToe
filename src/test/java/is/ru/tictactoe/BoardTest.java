@@ -44,6 +44,16 @@ public class BoardTest{
     board.changeBoard(player.getSymbol(), 7);
     assertEquals(true, board.checkWinner(player));
   }
+  @Test
+  public void testRandomInput()
+  {
+    Player player = new Player("Joi", Symbol.CROSS);
+    Board board = new Board();
+    board.changeBoard(player.getSymbol(), 2);
+    board.changeBoard(player.getSymbol(), 5);
+    board.changeBoard(player.getSymbol(), 7);
+    assertEquals(false, board.checkWinner(player));
+  }
 
   @Test
  public void checkValidMove()

@@ -1,8 +1,6 @@
 package is.ru.tictactoe;
 
-
-public class Board
-{
+public class Board {
 	char[][] board;
 	private final int constSize = 3;
 
@@ -12,14 +10,13 @@ public class Board
 
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				board[i][j] = (char) count;
+				board[i][j] = (char)(count+48);
 				count++;
 			}
 		}
 	}
 
 	public void print() {
-
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				System.out.print(board[i][j] + " ");
@@ -42,7 +39,6 @@ public class Board
 			}
 		}
 	}
-
 	public boolean checkWinner(Player p) {
 		int horizontal = 0;
 		int vertical = 0;
@@ -66,13 +62,11 @@ public class Board
 		return false;
 	}
 
-	private char getSymbol(Symbol symbol){
-		if (symbol == Symbol.CIRCLE) {
+	private char getSymbol(Symbol symbol) {
+		if (symbol == Symbol.CIRCLE)
 			return 'O';
-		}
-		else {
-			return 'X';
-		}
+
+		return 'X';
 	}
 
 	public boolean checkValidMove(int position) {
