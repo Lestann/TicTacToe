@@ -27,16 +27,20 @@ public class TicTacToeConsole {
       gameIteration(player, game, scanner);
       printBoard(game.getBoard());
       Player winner = game.restartGame();
-      if(winner != null){
-        System.out.println(winner.getName() + ", you won this round");
-      }
-      else{
-        System.out.println("Well this one was a draw, hopefully someone will win next time");
-      }
-      System.out.println("Do you want to play another round (Y/N): ");
-      char cont = scanner.next().charAt(0);
-      continueGame = cont == 'Y' ? true : false;
+      continueGame = printResults(winner, scanner);
     }
+  }
+
+  private static boolean printResults(Player winner, Scanner scanner) {
+    if(winner != null){
+      System.out.println(winner.getName() + ", you won this round");
+    }
+    else{
+      System.out.println("Well this one was a draw, hopefully someone will win next time");
+    }
+    System.out.println("Do you want to play another round (Y/N): ");
+    char cont = scanner.next().charAt(0);
+    return Character.toUpperCase(cont) == 'Y' ? true : false;
   }
 
   private static void gameIteration(Player player, TicTacToe game, Scanner scanner) {

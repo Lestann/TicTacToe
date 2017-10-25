@@ -1,5 +1,4 @@
 package is.ru.tictactoe;
-import java.util.Scanner;
 
 public class TicTacToe {
 
