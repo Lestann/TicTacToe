@@ -66,8 +66,9 @@ public class BoardTest{
   @Test
   public void testIsTaken () {
     Board board = new Board();
+    board.changeBoard(Symbol.CROSS, 1);
     assertEquals(false, board.isTaken(2));
+    assertEquals(true, board.isTaken(1));
   }
 
 }
-
