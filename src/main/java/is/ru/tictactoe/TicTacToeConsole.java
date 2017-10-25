@@ -22,22 +22,11 @@ public class TicTacToeConsole {
     boolean continueGame = true;
     TicTacToe game = new TicTacToe(player1, player2);
     Player player = player1;
-    final int SIZE = game.getSize();
 
     while (continueGame) {
-      for (int i = 0; i < (SIZE*SIZE); i++) {
-        printBoard(game.getBoard());
-        System.out.print(player.getName() + ", its your move: ");
-        int input = scanner.nextInt();
-        Player temp = player;
-        player = game.checkWinner(player, input);
-        if(temp == player) {
-          break;
-        }
-      }
+      gameIteration(player, game, scanner);
       printBoard(game.getBoard());
       Player winner = game.restartGame();
-
       if(winner != null){
         System.out.println(winner.getName() + ", you won this round");
       }
@@ -48,7 +37,20 @@ public class TicTacToeConsole {
       char cont = scanner.next().charAt(0);
       continueGame = cont == 'Y' ? true : false;
     }
+  }
 
+  private static void gameIteration(Player player, TicTacToe game, Scanner scanner) {
+    final int SIZE = game.getSize();
+    for (int i = 0; i < (SIZE*SIZE); i++) {
+      printBoard(game.getBoard());
+      System.out.print(player.getName() + ", its your move: ");
+      int input = scanner.nextInt();
+      Player temp = player;
+      player = game.checkWinner(player, input);
+      if(temp == player) {
+        return;
+      }
+    }
   }
 
   private static void printBoard(Board board) {
