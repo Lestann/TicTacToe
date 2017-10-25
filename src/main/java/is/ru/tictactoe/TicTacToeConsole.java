@@ -1,14 +1,27 @@
 package is.ru.tictactoe;
 
-import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.StdIn;
+import java.util.Scanner;
+
 
 public class TicTacToeConsole {
-  public static void main(String[] args) {
-    StdOut.println("Welcome to TicTacToe!!!");
+  public static void main(String[] args){
+      Scanner scanner = new Scanner(System.in);
+      System.out.println();
+      System.out.print("Please enter a name for player1: ");
+      String p1Name = getName(scanner);
+      Player player1 = new Player(p1Name, Symbol.CROSS);
+      System.out.println();
+      System.out.print("Please enter a name for player2: ");
+      String p2Name = getName(scanner);
+      Player player2 = new Player(p2Name, Symbol.CIRCLE);
+      TicTacToe game = new TicTacToe(player1, player2);
+      game.play(scanner);
+      scanner.close();
+  }
 
-    String text = StdIn.readString();
-
-    StdOut.println(text);
+  private static String getName(Scanner scanner){
+    String name;
+    name = scanner.nextLine();
+    return name;
   }
 }
