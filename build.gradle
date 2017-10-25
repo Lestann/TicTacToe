@@ -11,8 +11,8 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-// mainClassName = "is.ru.tictactoe.TicTacToeWeb"
-mainClassName = "is.ru.tictactoe.TicTacToeConsole"
+mainClassName = "is.ru.tictactoe.TicTacToeWeb"
+// mainClassName = "is.ru.tictactoe.TicTacToeConsole"
 
 run{
   standardInput = System.in
