@@ -14,6 +14,11 @@ public class TicTacToe {
     this.winner = null;
   }
 
+  public Board getBoard() {
+    return board;
+  }
+
+
   private Player switchPlayer(Player player){
     if(player == player1){
       player = player2;
@@ -25,7 +30,7 @@ public class TicTacToe {
     return player;
   }
 
-  private void gameIteration(Player player, Scanner scanner){
+  public void gameIteration(Player player, Scanner scanner){
     for (int i = 0; i < (SIZE*SIZE); i++) {
       System.out.println();
       board.print();
@@ -42,6 +47,9 @@ public class TicTacToe {
   }
 
   public void restartGame(){
+
+    board = new Board();
+
     if(winner != null){
       if(winner == player1){
         player1.incrementScore();
@@ -56,20 +64,4 @@ public class TicTacToe {
       System.out.println("This round was a draw!");
     }
   }
-
-  public void play(Scanner scanner) {
-    boolean continueGame = true;
-    Player player = player1;
-    while (continueGame) {
-      gameIteration(player, scanner);
-      board.print();
-      board = new Board();
-      restartGame();
-      System.out.println("Do you want to play another round (Y/N): ");
-      char cont = scanner.next().charAt(0);
-      continueGame = cont == 'Y' ? true : false;
-    }
-  }
-
-
 }
