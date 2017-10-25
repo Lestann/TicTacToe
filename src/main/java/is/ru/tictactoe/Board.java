@@ -72,6 +72,18 @@ public class Board {
 	}
 
 	public boolean isTaken (int position) {
-		return true;
+
+		int count = 1;
+		for (int i = 0; i < constSize; i++) {
+			for (int j = 0; i < constSize; i++) {
+				if (position == count) {
+					if (board[i][j] == 'X' || board[i][j] == 'O') {
+						return true;
+					}
+				}
+				count++;
+			}
+		}
+		return false;
 	}
 }
