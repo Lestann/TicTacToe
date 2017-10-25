@@ -47,8 +47,8 @@ public class Board {
 		char player = getSymbol(p.getSymbol());
 		for (int i = 0; i < constSize; i++) {
 			for (int j = 0; j < constSize; j++) {
-				if (board[i][j] == player) { 
-					horizontal++; 
+				if (board[i][j] == player) {
+					horizontal++;
 				}
 				else { horizontal = 0; }
 				if (board[j][i] == player) vertical++;
@@ -70,12 +70,11 @@ public class Board {
 	}
 
 	public boolean isTaken (int position) {
-
 		int count = 1;
 		for (int i = 0; i < constSize; i++) {
-			for (int j = 0; i < constSize; i++) {
+			for (int j = 0; j < constSize; j++) {
 				if (position == count) {
-					if (board[i][j] == 'X' || board[i][j] == 'O') {
+					if (board[i][j] == getSymbol(Symbol.CROSS) || board[i][j] == getSymbol(Symbol.CIRCLE)) {
 						return true;
 					}
 				}

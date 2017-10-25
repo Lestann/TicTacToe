@@ -49,6 +49,10 @@ public class TicTacToeConsole {
       printBoard(game.getBoard());
       System.out.print(player.getName() + ", its your move: ");
       int input = scanner.nextInt();
+      while(game.getBoard().isTaken(input)){
+        System.out.print("This spot is taken, please enter a valid input: ");
+        input = scanner.nextInt();
+      }
       Player temp = player;
       player = game.checkWinner(player, input);
       if(temp == player) {
