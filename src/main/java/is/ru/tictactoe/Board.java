@@ -69,6 +69,21 @@ public class Board {
 		return 'X';
 	}
 
+	public boolean isTaken (int position) {
+
+		int count = 1;
+		for (int i = 0; i < constSize; i++) {
+			for (int j = 0; i < constSize; i++) {
+				if (position == count) {
+					if (board[i][j] == 'X' || board[i][j] == 'O') {
+						return true;
+					}
+				}
+				count++;
+			}
+		}
+		return false;
+	}
 	public boolean checkValidMove(int position) {
 		for (int i = 1; i <= 9; i++) {
 			if (position == i) {
@@ -76,5 +91,5 @@ public class Board {
 			}
 		}
 		return false;
-	} 
+	}
 }

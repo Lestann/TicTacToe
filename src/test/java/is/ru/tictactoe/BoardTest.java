@@ -63,5 +63,11 @@ public class BoardTest{
    assertEquals(true, board.checkValidMove(8));
  }
 
+  @Test
+  public void testIsTaken () {
+    Board board = new Board();
+    assertEquals(false, board.isTaken(2));
+  }
+
 }
 
