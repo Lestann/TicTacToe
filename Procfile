@@ -1,1 +1,1 @@
-web: build/install/TicTacToe/bin/gradle-getting-started
+web: build/install/TicTacToe/bin/TicTacToe
