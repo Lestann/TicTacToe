@@ -48,11 +48,7 @@ public class TicTacToeConsole {
     for (int i = 0; i < (SIZE*SIZE); i++) {
       printBoard(game.getBoard());
       System.out.print(player.getName() + ", its your move: ");
-      int input = scanner.nextInt();
-      while(game.getBoard().isTaken(input)){
-        System.out.print("This spot is taken, please enter a valid input: ");
-        input = scanner.nextInt();
-      }
+      int input = getInput(scanner, game.getBoard());
       Player temp = player;
       player = game.checkWinner(player, input);
       if(temp == player) {
@@ -60,7 +56,14 @@ public class TicTacToeConsole {
       }
     }
   }
-
+  private static int getInput(Scanner scanner, Board board){
+    int input = scanner.nextInt();
+    while(board.isTaken(input)){
+      System.out.print("This spot is taken, please enter a valid input: ");
+      input = scanner.nextInt();
+    }
+    return input;
+  }
   private static void printBoard(Board board) {
     System.out.println();
     board.print();
