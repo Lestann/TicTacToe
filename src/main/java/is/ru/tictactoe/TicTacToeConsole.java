@@ -68,7 +68,7 @@ public class TicTacToeConsole {
     final int SIZE = game.getSize();
     for (int i = 0; i < (SIZE*SIZE); i++) {
       printBoard(game.getBoard());
-      System.out.print(player.getName() + ", its your move: ");
+      System.out.print(player.getName() + "(score: " + player.getScore() + "), its your move: ");
       int input = getInput(scanner, game.getBoard());
       Player temp = player;
       player = game.checkWinner(player, input);
