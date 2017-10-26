@@ -24,3 +24,5 @@ Rökfræðin sjálf er útfærð í klasanum TicTacToe og er sú útfærsla notu
 
 Útfærsla
 Eftir að hafa farið yfir allt það sem þurfti fyrir Tic Tac Toe var byrjað að útfæra. Við bjuggum til prófanir fyrir allar útfærslur og viðbætur sem gerðar voru á leiknum. Eftir hverja viðbót á leiknum og eftir að búið var að prófa viðbótina var viðbótin commit-uð og push-uð inná GitRepository-ið okkar. Við pössuðum okkar á því að vinna og push-a aldrei beint inná master branch-ið. Master brach-ið var meira að segja lokað stóran hluta af ferlinu og push-uðum við inn á nýtt brach sem heitir development. Hvert push þurfa að vera samþykkt af öðrum aðila en þeim sem push-aði og merge-að við development brach-ið.
+
+![ClassDiagram](https://cdn.rawgit.com/Lestann/TicTacToe/development/documentation/tictactoeclassdiagram.PNG)
