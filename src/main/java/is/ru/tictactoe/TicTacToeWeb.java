@@ -7,12 +7,9 @@ import spark.servlet.SparkApplication;
 public class TicTacToeWeb implements SparkApplication {
   public static void main(String[] args) {
     staticFileLocation("/public");
-    SparkApplication tictactoe = new TicTacToeWeb();
+    SparkApplication TicTacToeWeb = new TicTacToeWeb();
     port(getHerokuPort());
-
-    post("/newGame", (req, res) -> {
-      return true;
-    });
+    TicTacToeWeb.init();
   }
 
   static int getHerokuPort() {
@@ -25,6 +22,9 @@ public class TicTacToeWeb implements SparkApplication {
 
   @Override
   public void init() {
-    //
+    final TicTacToe game = new TicTacToe();
+    post("/checkWinner", (req, res) -> game.checkWinner());
+    post("/makeMove", (req, res) -> game.makeMove(Integer.parseInt(req.queryParams("id"))));
+    // post("/restart", (req, res) -> game.restartGame());
   }
 }

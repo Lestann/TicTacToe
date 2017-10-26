@@ -3,54 +3,51 @@ package is.ru.tictactoe;
 public class TicTacToe {
 
   private Board board;
-  private Player player1, player2, winner;
-  private final int SIZE = 3;
+  private Player player1, player2;
+  private char nextTurn;
 
-  public TicTacToe (Player player1, Player player2) {
+  public TicTacToe() {
+    this.board = new Board();
+    this.player1 = new Player("Player 1", Symbol.CROSS);
+    this.player2 = new Player("Player 2", Symbol.CIRCLE);
+    this.nextTurn = 'X';
+  }
+
+  public TicTacToe(Player player1, Player player2) {
     this.board = new Board();
     this.player1 = player1;
     this.player2 = player2;
-    this.winner = null;
+    this.nextTurn = 'X';
   }
 
   public Board getBoard() {
     return board;
   }
 
-  public int getSize() {
-    return SIZE;
+  public char getNextTurn() {
+    return nextTurn;
   }
 
-  private Player switchPlayer(Player player){
-    if(player == player1){
+  public void setNextTurn(char nextTurn) {
+    this.nextTurn = nextTurn;
+  }
+
+  private Player switchPlayer(Player player) {
+    if (player == player1)
       return player2;
-    }
+
     return player1;
   }
 
-  public Player checkWinner(Player player, int input) {
+  public boolean makeMove(int position) {
+     System.out.println("Position" + position);
 
-    board.changeBoard(player.getSymbol(), input);
-    if (board.checkWinner(player)){
-      winner = player;
-      return player;
-    }
-    return switchPlayer(player);
+     board.print();
+
+    return true;
   }
 
-  public Player restartGame(){
-    board = new Board();
-    if(winner != null){
-      if(winner == player1){
-        player1.incrementScore();
-      }
-      else{
-        player2.incrementScore();
-      }
-      Player player = winner;
-      winner = null;
-      return player;
-    }
-    return winner;
+  public String checkWinner() {
+    return "Kristján";
   }
 }
