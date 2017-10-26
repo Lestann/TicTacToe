@@ -1,9 +1,9 @@
 package is.ru.tictactoe;
 
 public class Player {
+  private String name;
   private Symbol symbol;
   private int score;
-  private String name;
 
   public Player(String name, Symbol symbol) {
     this.name = name;
@@ -21,6 +21,14 @@ public class Player {
 
   public String getName() {
     return name;
+  }
+
+  public void setSymbol(Symbol symbol) {
+    this.symbol = symbol;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public void incrementScore() {
