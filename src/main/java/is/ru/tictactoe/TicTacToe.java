@@ -3,7 +3,7 @@ package is.ru.tictactoe;
 public class TicTacToe {
 
   private Board board;
-  private Player player1, player2, winner;
+  private Player player1, player2, winner, firstPlayer;
   private final int SIZE = 3;
 
   public TicTacToe (Player player1, Player player2) {
@@ -11,6 +11,7 @@ public class TicTacToe {
     this.player1 = player1;
     this.player2 = player2;
     this.winner = null;
+    this.firstPlayer = player1;
   }
 
   public Board getBoard() {
@@ -19,6 +20,10 @@ public class TicTacToe {
 
   public int getSize() {
     return SIZE;
+  }
+
+  public Player getFirstPlayer(){
+    return firstPlayer;
   }
 
   private Player switchPlayer(Player player){
@@ -38,6 +43,11 @@ public class TicTacToe {
     return switchPlayer(player);
   }
 
+  private void switchSymbol(){
+    player1.setSymbol(player1.getSymbol().next());
+    player2.setSymbol(player2.getSymbol().next());
+  }
+
   public Player restartGame(){
     board = new Board();
     if(winner != null){
@@ -48,9 +58,14 @@ public class TicTacToe {
         player2.incrementScore();
       }
       Player player = winner;
+      switchSymbol();
+      firstPlayer = player2;
       winner = null;
       return player;
     }
+    switchSymbol();
+    firstPlayer = player2;
+
     return winner;
   }
 }

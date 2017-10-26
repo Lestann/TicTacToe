@@ -28,6 +28,7 @@ public class TicTacToeConsole {
       printBoard(game.getBoard());
       Player winner = game.restartGame();
       continueGame = printResults(winner, scanner);
+      player = game.getFirstPlayer();
     }
   }
 
