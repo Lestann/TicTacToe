@@ -39,8 +39,28 @@ public class TicTacToeConsole {
       System.out.println("Well this one was a draw, hopefully someone will win next time");
     }
     System.out.println("Do you want to play another round (Y/N): ");
-    char cont = scanner.next().charAt(0);
-    return Character.toUpperCase(cont) == 'Y' ? true : false;
+    return checkIfYOrN(scanner);
+  }
+
+  private static boolean checkIfYOrN(Scanner scanner){
+    String contin = "";
+    char cont = Character.MIN_VALUE;
+    boolean valid = false;
+    do{
+      contin = scanner.next();
+      if(!contin.matches("[A-Za-z]{1}")){
+        System.out.print("Please enter Y for yes or N for no: ");
+        continue;
+      }
+      cont = Character.toUpperCase(contin.charAt(0));
+      if(cont != 'Y' && cont != 'N'){
+        System.out.print("Please enter Y for yes or N for no: ");
+        continue;
+      }
+      valid = true;
+   }while(!contin.matches("[A-Za-z]{1}") && !valid);
+
+    return cont == 'Y' ? true : false;
   }
 
   private static void gameIteration(Player player, TicTacToe game, Scanner scanner) {
@@ -51,19 +71,34 @@ public class TicTacToeConsole {
       int input = getInput(scanner, game.getBoard());
       Player temp = player;
       player = game.checkWinner(player, input);
-      if(temp == player) {
-        return;
+      if(temp == player){
+          return;
       }
     }
   }
   private static int getInput(Scanner scanner, Board board){
-    int input = scanner.nextInt();
-    while(board.isTaken(input)){
-      System.out.print("This spot is taken, please enter a valid input: ");
+    int input;
+    do{
+      checkIfInt(scanner);
       input = scanner.nextInt();
-    }
+      if(board.isTaken(input)){
+        System.out.print("This spot is taken, please choose another one: ");
+      }
+      else if(!board.checkValidMove(input)){
+        System.out.print("Please enter a number between 1 and 9: ");
+      }
+    }while(board.isTaken(input) || !board.checkValidMove(input));
+
     return input;
   }
+
+  private static void checkIfInt(Scanner scanner){
+    while(!scanner.hasNextInt()){
+      System.out.print("Please enter a valid input: ");
+      scanner.next();
+    }
+  }
+
   private static void printBoard(Board board) {
     System.out.println();
     board.print();
