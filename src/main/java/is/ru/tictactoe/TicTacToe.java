@@ -43,6 +43,11 @@ public class TicTacToe {
     return switchPlayer(player);
   }
 
+  private void switchSymbol(){
+    player1.setSymbol(player1.getSymbol().next());
+    player2.setSymbol(player2.getSymbol().next());
+  }
+
   public Player restartGame(){
     board = new Board();
     if(winner != null){
@@ -53,14 +58,12 @@ public class TicTacToe {
         player2.incrementScore();
       }
       Player player = winner;
-      player1.setSymbol(player1.getSymbol().next());
-      player2.setSymbol(player2.getSymbol().next());
+      switchSymbol();
       firstPlayer = player2;
       winner = null;
       return player;
     }
-    player1.setSymbol(player1.getSymbol().next());
-    player2.setSymbol(player2.getSymbol().next());
+    switchSymbol();
     firstPlayer = player2;
 
     return winner;
