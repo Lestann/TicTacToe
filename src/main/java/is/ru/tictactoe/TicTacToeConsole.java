@@ -39,8 +39,12 @@ public class TicTacToeConsole {
       System.out.println("Well this one was a draw, hopefully someone will win next time");
     }
     System.out.println("Do you want to play another round (Y/N): ");
-    char cont = scanner.next().charAt(0);
-    return Character.toUpperCase(cont) == 'Y' ? true : false;
+    char cont = Character.toUpperCase(scanner.next().charAt(0));
+    while(cont != 'Y' && cont != 'N'){
+      System.out.print("Please enter Y for yes or N for no: ");
+      cont = Character.toUpperCase(scanner.next().charAt(0));
+    }
+    return cont == 'Y' ? true : false;
   }
 
   private static void gameIteration(Player player, TicTacToe game, Scanner scanner) {
@@ -54,8 +58,8 @@ public class TicTacToeConsole {
       if(temp == player){
           return;
       }
-      }
     }
+  }
   private static int getInput(Scanner scanner, Board board){
     int input;
     do{
