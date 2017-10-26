@@ -34,4 +34,11 @@ public class Player {
   public void incrementScore() {
     score++;
   }
+
+  private char getSymbol(Symbol symbol) {
+    if (symbol == Symbol.CIRCLE)
+      return 'O';
+
+    return 'X';
+  }
 }
