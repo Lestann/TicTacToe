@@ -59,10 +59,7 @@ public class TicTacToeConsole {
   private static int getInput(Scanner scanner, Board board){
     int input;
     do{
-      while(!scanner.hasNextInt()){
-        System.out.print("Please enter a valid input: ");
-        scanner.next();
-      }
+      checkIfInt(scanner);
       input = scanner.nextInt();
       if(board.isTaken(input)){
         System.out.print("This spot is taken, please choose another one: ");
@@ -73,6 +70,13 @@ public class TicTacToeConsole {
     }while(board.isTaken(input) || !board.checkValidMove(input));
 
     return input;
+  }
+
+  private static void checkIfInt(Scanner scanner){
+    while(!scanner.hasNextInt()){
+      System.out.print("Please enter a valid input: ");
+      scanner.next();
+    }
   }
 
   private static void printBoard(Board board) {
