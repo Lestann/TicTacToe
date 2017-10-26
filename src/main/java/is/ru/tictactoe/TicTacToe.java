@@ -53,16 +53,14 @@ public class TicTacToe {
         player2.incrementScore();
       }
       Player player = winner;
-      Symbol tempSymbol = player1.getSymbol();
-      player1.setSymbol(player2.getSymbol());
-      player2.setSymbol(tempSymbol);
+      player1.setSymbol(player1.getSymbol().next());
+      player2.setSymbol(player2.getSymbol().next());
       firstPlayer = player2;
       winner = null;
       return player;
     }
-    Symbol tempSymbol = player1.getSymbol();
-    player1.setSymbol(player2.getSymbol());
-    player2.setSymbol(tempSymbol);
+    player1.setSymbol(player1.getSymbol().next());
+    player2.setSymbol(player2.getSymbol().next());
     firstPlayer = player2;
 
     return winner;
