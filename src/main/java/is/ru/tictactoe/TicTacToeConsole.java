@@ -51,19 +51,30 @@ public class TicTacToeConsole {
       int input = getInput(scanner, game.getBoard());
       Player temp = player;
       player = game.checkWinner(player, input);
-      if(temp == player) {
-        return;
+      if(temp == player){
+          return;
+      }
       }
     }
-  }
   private static int getInput(Scanner scanner, Board board){
-    int input = scanner.nextInt();
-    while(board.isTaken(input)){
-      System.out.print("This spot is taken, please enter a valid input: ");
+    int input;
+    do{
+      while(!scanner.hasNextInt()){
+        System.out.print("Please enter a valid input: ");
+        scanner.next();
+      }
       input = scanner.nextInt();
-    }
+      if(board.isTaken(input)){
+        System.out.print("This spot is taken, please choose another one: ");
+      }
+      else if(!board.checkValidMove(input)){
+        System.out.print("Please enter a number between 1 and 9: ");
+      }
+    }while(board.isTaken(input) || !board.checkValidMove(input));
+
     return input;
   }
+
   private static void printBoard(Board board) {
     System.out.println();
     board.print();
