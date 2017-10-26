@@ -40,6 +40,10 @@ public class TicTacToeConsole {
     }
     System.out.println("Do you want to play another round (Y/N): ");
     char cont = Character.toUpperCase(scanner.next().charAt(0));
+    return checkIfYOrN(cont, scanner);
+  }
+
+  private static boolean checkIfYOrN(char cont, Scanner scanner){
     while(cont != 'Y' && cont != 'N'){
       System.out.print("Please enter Y for yes or N for no: ");
       cont = Character.toUpperCase(scanner.next().charAt(0));
