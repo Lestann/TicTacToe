@@ -39,15 +39,27 @@ public class TicTacToeConsole {
       System.out.println("Well this one was a draw, hopefully someone will win next time");
     }
     System.out.println("Do you want to play another round (Y/N): ");
-    char cont = Character.toUpperCase(scanner.next().charAt(0));
-    return checkIfYOrN(cont, scanner);
+    return checkIfYOrN(scanner);
   }
 
-  private static boolean checkIfYOrN(char cont, Scanner scanner){
-    while(cont != 'Y' && cont != 'N'){
-      System.out.print("Please enter Y for yes or N for no: ");
-      cont = Character.toUpperCase(scanner.next().charAt(0));
-    }
+  private static boolean checkIfYOrN(Scanner scanner){
+    String contin = "";
+    char cont = Character.MIN_VALUE;
+    boolean valid = false;
+    do{
+      contin = scanner.next();
+      if(!contin.matches("[A-Za-z]{1}")){
+        System.out.print("Please enter Y for yes or N for no: ");
+        continue;
+      }
+      cont = Character.toUpperCase(contin.charAt(0));
+      if(cont != 'Y' && cont != 'N'){
+        System.out.print("Please enter Y for yes or N for no: ");
+        continue;
+      }
+      valid = true;
+   }while(!contin.matches("[A-Za-z]{1}") && !valid);
+
     return cont == 'Y' ? true : false;
   }
 
