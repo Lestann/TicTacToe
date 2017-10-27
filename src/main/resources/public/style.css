@@ -3,13 +3,20 @@
 }
 
 body {
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .container {
-  width: 850px;
+  margin: 0 auto;
+  height: 900px;
+}
+
+.container h1 {
+  text-align: center;
+  font-size: 35px;
 }
 
 #board {
@@ -17,17 +24,19 @@ body {
   padding: 0;
   width: 300px;
   height: 300px;
-  border: 1px solid black;
 }
 
-
+.first-row {
+  border: 1px solid red;
+  padding: 5px;
+}
 
 table td {
   width: 100px;
   height: 100px;
   cursor: pointer;
-  border: 1px solid black;
   text-align: center;
+  background-color: #F2F3F4;
 }
 
 table td:before {
@@ -36,14 +45,30 @@ table td:before {
 
 table td.X:before {
   content: "X";
-  color: green;
+  color: #58D68D;
 }
 
 
 table td.O:before {
   content: "O";
-  color: red;
+  color: #EC7063;
 }
+
 table td:hover {
-  background-color: blue;
+  opacity: 0.7;
 }
+
+
+.new-game {
+  margin-top: 20px;
+  height: 30px;
+  width: 100px;
+  border: 0;
+  outline: 0;
+  background-color: #7DCEA0;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+
