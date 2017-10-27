@@ -51,7 +51,7 @@ public class BoardTest {
     board.changeBoard(player.getSymbol(), 2);
     board.changeBoard(player.getSymbol(), 5);
     board.changeBoard(player.getSymbol(), 7);
-    assertEquals(false, board.checkWinner(player));
+    assertEquals(false, board.checkWinner(player.getSymbol()));
   }
   @Test
   public void testFailInputHorizontal()
@@ -61,7 +61,7 @@ public class BoardTest {
     board.changeBoard(player.getSymbol(), 1);
     board.changeBoard(player.getSymbol(), 2);
     board.changeBoard(player.getSymbol(), 6);
-    assertEquals(false, board.checkWinner(player));
+    assertEquals(false, board.checkWinner(player.getSymbol()));
   }
 
   @Test
