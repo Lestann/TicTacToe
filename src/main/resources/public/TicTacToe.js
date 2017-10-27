@@ -25,21 +25,29 @@ $(document).ready(function() {
     });
   });
 
+  window.onunload = resetGame();
+
   // new game
   $('.new-game').click(function() {
     if (confirm('Are you sure you want to start a new game?')) {
       console.log('NEW GAME!')
-      $.ajax({
-        type: 'POST',
-        url: '/resetGame'
-      }).done(function(result){
-          clearBoard();
-      });
+      resetGame();
       // here I need to call some reset game API call
 
     }
   });
-})
+});
+
+function resetGame(){
+  $.ajax({
+    type: 'POST',
+    url: '/resetGame'
+  }).done(function(result){
+      clearBoard();
+  });
+
+  currentPlayer = "X";
+}
 
 function switchPlayerTurn() {
   if (currentPlayer == 'X')
@@ -55,11 +63,11 @@ function checkWinner() {
   }).done(function(result) {
     if (result == 'X' || result == 'O'){
       alert(result, " won the game");
-      clearBoard();
+      resetGame();
     }
     else if (result == 'D'){
       alert('draw!')
-      clearBoard();
+      resetGame();
     }
 
   });

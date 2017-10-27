@@ -40,7 +40,6 @@ public class TicTacToe {
   }
 
   public boolean makeMove(int position) {
-    board.print();
     if(!board.isTaken(position)){
       board.changeBoard(nextTurn, position);
       nextTurn = nextTurn.next();
@@ -54,15 +53,12 @@ public class TicTacToe {
 
     if(board.checkWinner(nextTurn.next())){
       if(nextTurn.next() == Symbol.CROSS){
-        resetGame();
         return "X";
       }
-      resetGame();
       return "O";
     }
     else if(board.isFull())
     {
-      resetGame();
       return "D";
     }
     return "";
