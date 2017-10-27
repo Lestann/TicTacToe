@@ -6,10 +6,10 @@
 Verkefnið er hýst á github.com. Það allra fyrsta sem þú þarft er Git. Hægt er að sækja verkefnið með skipuninni `git clone https://github.com/Lestann/TicTacToe.git`.
 
 #### Annað sem er nauðsynlegt: ####
-* Java JDK 8
-* Gradle
+- [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- [Gradle](https://gradle.org)
 #### Sem gott er að hafa #### 
-* Heroko CLI
+- Heroko CLI
 #### Þýðing og keyrsla #### 
-* `gradle build`
-* `gradle run`
+- `gradle build`
+- `gradle run`
