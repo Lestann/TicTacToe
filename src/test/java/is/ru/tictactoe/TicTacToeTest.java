@@ -40,4 +40,19 @@ public class TicTacToeTest {
     game.makeMove(3); //X
     assertEquals("X", game.checkWinner());
   }
+
+  @Test
+  public void testCheckWinnerDraw(){
+    TicTacToe game = new TicTacToe();
+    game.makeMove(1); //X
+    game.makeMove(2); //O
+    game.makeMove(3); //X
+    game.makeMove(7); //O
+    game.makeMove(8); //X
+    game.makeMove(9); //O
+    game.makeMove(4); //X
+    game.makeMove(5); //O
+    game.makeMove(6); //X
+    assertEquals("D", game.checkWinner());
+  }
 }

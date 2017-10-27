@@ -51,8 +51,8 @@ function checkWinner() {
     if (result == 'X' || result == 'O')
       console.log(result + 'won the game')
 
-  //  if (result == 'D')
-      //alert('draw!')
+    if (result == 'D')
+      alert('draw!')
   });
 }
 
