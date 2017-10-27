@@ -29,9 +29,14 @@ $(document).ready(function() {
   $('.new-game').click(function() {
     if (confirm('Are you sure you want to start a new game?')) {
       console.log('NEW GAME!')
-
+      $.ajax({
+        type: 'POST',
+        url: '/resetGame'
+      }).done(function(result){
+          clearBoard();
+      });
       // here I need to call some reset game API call
-      clearBoard();
+
     }
   });
 })
