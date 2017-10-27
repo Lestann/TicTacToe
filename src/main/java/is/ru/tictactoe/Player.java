@@ -11,6 +11,10 @@ public class Player {
     this.score = 0;
   }
 
+  public void setSymbol(Symbol symbol) {
+    this.symbol = symbol;
+  }
+
   public Symbol getSymbol() {
     return symbol;
   }
