@@ -17,16 +17,17 @@ public class TicTacToeConsole {
     Player player = player1;
     final int SIZE = game.getBoard().SIZE;
     for(int i = 0; i < SIZE*SIZE; i++){
-      char[][] board = game.getBoard().getBoard();;
+      Board board = game.getBoard();
       printBoard(board, SIZE);
       System.out.print(player.getName() + ", where do you want to put your " + game.getNextTurn().toString().toLowerCase() + ": ");
-      int n = scanner.nextInt();
+      int n = getInput(scanner, board);
       game.makeMove(n);
       player = switchPlayer(player1, player2, player);
     }
   }
 
-  private static void printBoard(char[][] board, int SIZE){
+  private static void printBoard(Board b, int SIZE){
+    char[][] board = b.getBoard();
     System.out.println();
     for (int i = 0; i < SIZE; i++) {
       for (int j = 0; j < SIZE; j++) {
@@ -36,6 +37,28 @@ public class TicTacToeConsole {
     }
   }
 
+  private static int getInput(Scanner scanner, Board board) {
+    int input;
+    do{
+      checkIfInt(scanner);
+      input = scanner.nextInt();
+      if(board.isTaken(input)){
+        System.out.print("This spot is taken, please choose another one: ");
+      }
+      else if(!board.checkValidMove(input)){
+        System.out.print("Please enter a number between 1 and 9: ");
+      }
+    }while(board.isTaken(input) || !board.checkValidMove(input));
+
+    return input;
+  }
+
+  private static void checkIfInt(Scanner scanner){
+    while(!scanner.hasNextInt()){
+      System.out.print("Please enter a valid input: ");
+      scanner.next();
+    }
+  }
   private static Player switchPlayer(Player player1, Player player2, Player player){
     if(player == player1){
        return player2;
