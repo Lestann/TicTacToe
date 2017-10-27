@@ -18,17 +18,7 @@ public class TicTacToeConsole {
     final int SIZE = game.getBoard().SIZE;
     boolean continueGame = true;
     while(continueGame){
-      for(int i = 0; i < SIZE*SIZE; i++){
-        Board board = game.getBoard();
-        printBoard(board, SIZE);
-        System.out.print(player.getName() + ", where do you want to put your " + game.getNextTurn().toString().toLowerCase() + ": ");
-        int n = getInput(scanner, board);
-        game.makeMove(n);
-        if(game.checkWinner() != ""){
-          break;
-        }
-        player = switchPlayer(player1, player2, player);
-      }
+      gameIteration(player1, player2, game, player, SIZE, scanner);
       String winner = game.checkWinner();
       continueGame = printResults(winner, scanner, player);
       System.out.println();
@@ -36,6 +26,20 @@ public class TicTacToeConsole {
       player2 = game.getPlayer2();
       player = switchPlayer(player1, player2, player);
       game.resetGame();
+    }
+  }
+
+  private static void gameIteration(Player player1, Player player2, TicTacToe game, Player player, final int SIZE, Scanner scanner){
+    for(int i = 0; i < SIZE*SIZE; i++){
+      Board board = game.getBoard();
+      printBoard(board, SIZE);
+      System.out.print(player.getName() + ", where do you want to put your " + game.getNextTurn().toString().toLowerCase() + ": ");
+      int n = getInput(scanner, board);
+      game.makeMove(n);
+      if(game.checkWinner() != ""){
+        break;
+      }
+      player = switchPlayer(player1, player2, player);
     }
   }
 
@@ -68,6 +72,7 @@ public class TicTacToeConsole {
   }
   private static boolean printResults(String winner, Scanner scanner, Player player) {
     if(winner != ""){
+      System.out.println();
       System.out.println(player.getName() + ", you won this round");
     }
     else{
