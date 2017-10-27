@@ -28,6 +28,10 @@ public class TicTacToeConsole {
       player = switchPlayer(player1, player2, player);
     }
     String winner = game.checkWinner();
+    printWinner(winner, player);
+  }
+
+  private static void printWinner(String winner, Player player){
     if(winner != "D"){
       System.out.println(player.getName() + " , you won this round");
     }
