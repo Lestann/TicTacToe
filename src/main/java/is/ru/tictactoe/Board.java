@@ -43,13 +43,13 @@ public class Board {
       }
     }
   }
-  public boolean checkWinner(Player p) {
-    int horizontal = 0;
-    int vertical = 0;
+  public boolean checkWinner(Symbol p) {
     int diagnallr = 0;
     int diagnalrl = 0;
-    char player = getSymbol(p.getSymbol());
+    char player = getSymbol(p);
     for (int i = 0; i < SIZE; i++) {
+      int horizontal = 0;
+      int vertical = 0;
       for (int j = 0; j < SIZE; j++) {
         if (board[i][j] == player) {
           horizontal++;

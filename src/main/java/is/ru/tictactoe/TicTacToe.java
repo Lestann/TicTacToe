@@ -42,7 +42,6 @@ public class TicTacToe {
   public boolean makeMove(int position) {
     if(!board.isTaken(position)){
       board.changeBoard(nextTurn, position);
-      nextTurn = nextTurn.next();
 
       return true;
     }
@@ -51,6 +50,15 @@ public class TicTacToe {
   }
 
   public String checkWinner() {
-    return "Kristján";
+    if(board.checkWinner(nextTurn)){
+      if(nextTurn != Symbol.CROSS){
+        nextTurn = nextTurn.next();
+        return "X";
+      }
+      nextTurn = nextTurn.next();
+      return "O";
+    }
+    nextTurn = nextTurn.next();
+    return "D";
   }
 }

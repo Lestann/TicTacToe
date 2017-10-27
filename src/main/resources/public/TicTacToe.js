@@ -18,10 +18,9 @@ $(document).ready(function() {
     }).done(function(result) {
       if(result === "true"){
         test.addClass(currentPlayer)
-
-        switchPlayerTurn();
         // is there a winner?
         checkWinner();
+        switchPlayerTurn();
       }
     });
   });
@@ -49,12 +48,11 @@ function checkWinner() {
     type: 'POST',
     url: '/checkWinner'
   }).done(function(result) {
-    console.log(result)
     if (result == 'X' || result == 'O')
       console.log(result + 'won the game')
 
-    if (result == 'D')
-      alert('draw!')
+  //  if (result == 'D')
+      //alert('draw!')
   });
 }
 

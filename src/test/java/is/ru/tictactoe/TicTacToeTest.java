@@ -29,4 +29,15 @@ public class TicTacToeTest {
     game.makeMove(1);
     assertEquals(false, game.makeMove(1));
   }
+
+  @Test
+  public void testCheckWinner(){
+    TicTacToe game = new TicTacToe();
+    game.makeMove(1); //X
+    game.makeMove(4); //O
+    game.makeMove(2); //X
+    game.makeMove(5); //O
+    game.makeMove(3); //X
+    assertEquals("D", game.checkWinner());
+  }
 }
