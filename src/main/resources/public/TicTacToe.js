@@ -16,13 +16,13 @@ $(document).ready(function() {
       url: '/makeMove',
       data: "id=" + id
     }).done(function(result) {
-      console.log("Successfully made a move")
-      test.addClass(currentPlayer)
+      if(result === "true"){
+        test.addClass(currentPlayer)
 
-      switchPlayerTurn();
-
-      // is there a winner?
-      checkWinner();
+        switchPlayerTurn();
+        // is there a winner?
+        checkWinner();
+      }
     });
   });
 
@@ -64,4 +64,3 @@ function clearBoard() {
     $(this).removeClass('X').removeClass('O');
   });
 }
-

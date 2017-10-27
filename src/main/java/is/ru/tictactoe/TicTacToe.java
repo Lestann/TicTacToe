@@ -4,31 +4,31 @@ public class TicTacToe {
 
   private Board board;
   private Player player1, player2;
-  private char nextTurn;
+  private Symbol nextTurn;
 
   public TicTacToe() {
     this.board = new Board();
     this.player1 = new Player("Player 1", Symbol.CROSS);
     this.player2 = new Player("Player 2", Symbol.CIRCLE);
-    this.nextTurn = 'X';
+    this.nextTurn = Symbol.CROSS;
   }
 
   public TicTacToe(Player player1, Player player2) {
     this.board = new Board();
     this.player1 = player1;
     this.player2 = player2;
-    this.nextTurn = 'X';
+    this.nextTurn = Symbol.CROSS;
   }
 
   public Board getBoard() {
     return board;
   }
 
-  public char getNextTurn() {
+  public Symbol getNextTurn() {
     return nextTurn;
   }
 
-  public void setNextTurn(char nextTurn) {
+  public void setNextTurn(Symbol nextTurn) {
     this.nextTurn = nextTurn;
   }
 
@@ -40,11 +40,14 @@ public class TicTacToe {
   }
 
   public boolean makeMove(int position) {
-     System.out.println("Position" + position);
+    if(!board.isTaken(position)){
+      board.changeBoard(nextTurn, position);
+      nextTurn = nextTurn.next();
 
-     board.print();
+      return true;
+    }
 
-    return true;
+    return false;
   }
 
   public String checkWinner() {
