@@ -53,15 +53,22 @@ public class TicTacToe {
 
     if(board.checkWinner(nextTurn.next())){
       if(nextTurn.next() == Symbol.CROSS){
+        resetGame();
         return "X";
       }
+      resetGame();
       return "O";
     }
     else if(board.isFull())
     {
+      resetGame();
       return "D";
     }
     return "";
 
+  }
+
+  private void resetGame(){
+    board = new Board();
   }
 }
