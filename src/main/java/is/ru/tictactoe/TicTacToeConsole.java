@@ -18,19 +18,29 @@ public class TicTacToeConsole {
     final int SIZE = game.getBoard().SIZE;
     for(int i = 0; i < SIZE*SIZE; i++){
       char[][] board = game.getBoard().getBoard();;
-      System.out.println();
-      for (int k = 0; k < SIZE; k++) {
-        for (int j = 0; j < SIZE; j++) {
-          System.out.print(board[k][j] + " ");
-        }
-        System.out.println();
-      }
+      printBoard(board, SIZE);
       System.out.print(player.getName() + ", where do you want to put your " + game.getNextTurn().toString().toLowerCase() + ": ");
       int n = scanner.nextInt();
       game.makeMove(n);
-      if(player == player1) player = player2;
-      else player = player1;
+      player = switchPlayer(player1, player2, player);
     }
+  }
+
+  private static void printBoard(char[][] board, int SIZE){
+    System.out.println();
+    for (int i = 0; i < SIZE; i++) {
+      for (int j = 0; j < SIZE; j++) {
+        System.out.print(board[i][j] + " ");
+      }
+      System.out.println();
+    }
+  }
+
+  private static Player switchPlayer(Player player1, Player player2, Player player){
+    if(player == player1){
+       return player2;
+    }
+    return player1;
   }
 
   private static String getName(int number, Scanner scanner){
