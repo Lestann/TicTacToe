@@ -1,18 +1,14 @@
 package is.ru.tictactoe;
 
 public class Player {
+  private String name;
   private Symbol symbol;
   private int score;
-  private String name;
 
   public Player(String name, Symbol symbol) {
     this.name = name;
     this.symbol = symbol;
     this.score = 0;
-  }
-
-  public void setSymbol(Symbol symbol) {
-    this.symbol = symbol;
   }
 
   public Symbol getSymbol() {
@@ -27,7 +23,22 @@ public class Player {
     return name;
   }
 
+  public void setSymbol(Symbol symbol) {
+    this.symbol = symbol;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
   public void incrementScore() {
     score++;
+  }
+
+  private char getSymbol(Symbol symbol) {
+    if (symbol == Symbol.CIRCLE)
+      return 'O';
+
+    return 'X';
   }
 }

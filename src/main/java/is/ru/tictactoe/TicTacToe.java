@@ -3,69 +3,74 @@ package is.ru.tictactoe;
 public class TicTacToe {
 
   private Board board;
-  private Player player1, player2, winner, firstPlayer;
-  private final int SIZE = 3;
+  private Player player1, player2;
+  private Symbol nextTurn;
 
-  public TicTacToe (Player player1, Player player2) {
+  public TicTacToe() {
+    this.board = new Board();
+    this.player1 = new Player("Player 1", Symbol.CROSS);
+    this.player2 = new Player("Player 2", Symbol.CIRCLE);
+    this.nextTurn = Symbol.CROSS;
+  }
+
+  public TicTacToe(Player player1, Player player2) {
     this.board = new Board();
     this.player1 = player1;
     this.player2 = player2;
-    this.winner = null;
-    this.firstPlayer = player1;
+    this.nextTurn = Symbol.CROSS;
   }
 
   public Board getBoard() {
     return board;
   }
 
-  public int getSize() {
-    return SIZE;
+  public Symbol getNextTurn() {
+    return nextTurn;
   }
 
-  public Player getFirstPlayer(){
-    return firstPlayer;
+  public void setNextTurn(Symbol nextTurn) {
+    this.nextTurn = nextTurn;
   }
 
-  private Player switchPlayer(Player player){
-    if(player == player1){
+  private Player switchPlayer(Player player) {
+    if (player == player1)
       return player2;
-    }
+
     return player1;
   }
 
-  public Player checkWinner(Player player, int input) {
-
-    board.changeBoard(player.getSymbol(), input);
-    if (board.checkWinner(player)){
-      winner = player;
-      return player;
+  public boolean makeMove(int position) {
+    if(!board.isTaken(position)){
+      board.changeBoard(nextTurn, position);
+      nextTurn = nextTurn.next();
+      return true;
     }
-    return switchPlayer(player);
+
+    return false;
   }
 
-  private void switchSymbol(){
+  public String checkWinner() {
+
+    if(board.checkWinner(nextTurn.next())){
+      if(nextTurn.next() == Symbol.CROSS){
+        return "X";
+      }
+      return "O";
+    }
+    else if(board.isFull())
+    {
+      return "D";
+    }
+    return "";
+
+  }
+
+  public boolean resetGame(){
+    board = new Board();
     player1.setSymbol(player1.getSymbol().next());
     player2.setSymbol(player2.getSymbol().next());
-  }
+    nextTurn = Symbol.CROSS;
 
-  public Player restartGame(){
-    board = new Board();
-    if(winner != null){
-      if(winner == player1){
-        player1.incrementScore();
-      }
-      else{
-        player2.incrementScore();
-      }
-      Player player = winner;
-      switchSymbol();
-      firstPlayer = player2;
-      winner = null;
-      return player;
-    }
-    switchSymbol();
-    firstPlayer = player2;
-
-    return winner;
+    return true;
   }
 }
