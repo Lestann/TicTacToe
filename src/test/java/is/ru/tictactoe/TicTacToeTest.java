@@ -38,6 +38,6 @@ public class TicTacToeTest {
     game.makeMove(2); //X
     game.makeMove(5); //O
     game.makeMove(3); //X
-    assertEquals("D", game.checkWinner());
+    assertEquals("X", game.checkWinner());
   }
 }

@@ -51,7 +51,7 @@ public class TicTacToe {
 
   public String checkWinner() {
     if(board.checkWinner(nextTurn)){
-      if(nextTurn != Symbol.CROSS){
+      if(nextTurn == Symbol.CROSS){
         nextTurn = nextTurn.next();
         return "X";
       }

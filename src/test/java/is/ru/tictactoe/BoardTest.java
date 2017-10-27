@@ -58,4 +58,20 @@ public class BoardTest {
     assertEquals(false, board.isTaken(2));
     assertEquals(true, board.isTaken(1));
   }
+
+  @Test
+  public void testIsFull(){
+    Board board = new Board();
+    board.changeBoard(Symbol.CROSS, 1);
+    board.changeBoard(Symbol.CIRCLE, 2);
+    board.changeBoard(Symbol.CROSS, 3);
+    board.changeBoard(Symbol.CIRCLE, 4);
+    board.changeBoard(Symbol.CIRCLE, 5);
+    board.changeBoard(Symbol.CROSS, 6);
+    board.changeBoard(Symbol.CIRCLE, 7);
+    board.changeBoard(Symbol.CROSS, 8);
+    board.changeBoard(Symbol.CIRCLE, 9);
+    assertEquals(true, board.isFull());
+
+  }
 }

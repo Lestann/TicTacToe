@@ -96,4 +96,18 @@ public class Board {
     }
     return false;
   }
+
+  public boolean isFull(){
+    char x, y;
+    x = getSymbol(Symbol.CROSS);
+    y = getSymbol(Symbol.CIRCLE);
+    for(int i = 0; i < SIZE; i++){
+      for(int j = 0; j < SIZE; j++){
+        if(board[i][j] != x && board[i][j] != y){
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 }
