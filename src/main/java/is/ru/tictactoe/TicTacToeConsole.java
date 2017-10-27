@@ -16,29 +16,27 @@ public class TicTacToeConsole {
     TicTacToe game = new TicTacToe(player1, player2);
     Player player = player1;
     final int SIZE = game.getBoard().SIZE;
-    for(int i = 0; i < SIZE*SIZE; i++){
-      Board board = game.getBoard();
-      printBoard(board, SIZE);
-      System.out.print(player.getName() + ", where do you want to put your " + game.getNextTurn().toString().toLowerCase() + ": ");
-      int n = getInput(scanner, board);
-      game.makeMove(n);
-      if(game.checkWinner() != ""){
-        break;
+    boolean continueGame = true;
+    while(continueGame){
+      for(int i = 0; i < SIZE*SIZE; i++){
+        Board board = game.getBoard();
+        printBoard(board, SIZE);
+        System.out.print(player.getName() + ", where do you want to put your " + game.getNextTurn().toString().toLowerCase() + ": ");
+        int n = getInput(scanner, board);
+        game.makeMove(n);
+        if(game.checkWinner() != ""){
+          break;
+        }
+        player = switchPlayer(player1, player2, player);
       }
-      player = switchPlayer(player1, player2, player);
+      String winner = game.checkWinner();
+      continueGame = printResults(winner, scanner, player);
+      System.out.println();
+
+      game.resetGame();
     }
-    String winner = game.checkWinner();
-    printWinner(winner, player);
   }
 
-  private static void printWinner(String winner, Player player){
-    if(winner != "D"){
-      System.out.println(player.getName() + " , you won this round");
-    }
-    else{
-      System.out.println("This round was a draw");
-    }
-  }
 
   private static void printBoard(Board b, int SIZE){
     char[][] board = b.getBoard();
@@ -66,6 +64,37 @@ public class TicTacToeConsole {
 
     return input;
   }
+  private static boolean printResults(String winner, Scanner scanner, Player player) {
+    if(winner != ""){
+      System.out.println(player.getName() + ", you won this round");
+    }
+    else{
+      System.out.println("Well this one was a draw, hopefully someone will win next time");
+    }
+    System.out.println("Do you want to play another round (Y/N): ");
+    return checkIfYOrN(scanner);
+  }
+
+  private static boolean checkIfYOrN(Scanner scanner){
+    String contin = "";
+    char cont = Character.MIN_VALUE;
+    boolean valid = false;
+    do{
+      contin = scanner.next();
+      if(!contin.matches("[A-Za-z]{1}")){
+        System.out.print("Please enter Y for yes or N for no: ");
+        continue;
+      }
+      cont = Character.toUpperCase(contin.charAt(0));
+      if(cont != 'Y' && cont != 'N'){
+        System.out.print("Please enter Y for yes or N for no: ");
+        continue;
+      }
+      valid = true;
+    }while(!contin.matches("[A-Za-z]{1}") && !valid);
+
+    return cont == 'Y' ? true : false;
+  }
 
   private static void checkIfInt(Scanner scanner){
     while(!scanner.hasNextInt()){
@@ -73,6 +102,7 @@ public class TicTacToeConsole {
       scanner.next();
     }
   }
+
   private static Player switchPlayer(Player player1, Player player2, Player player){
     if(player == player1){
        return player2;
