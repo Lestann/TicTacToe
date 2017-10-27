@@ -20,7 +20,7 @@ public class TicTacToeConsole {
     while(continueGame){
       gameIteration(player1, player2, game, player, SIZE, scanner);
       String winner = game.checkWinner();
-      continueGame = printResults(winner, scanner, player);
+      continueGame = printResults(winner, scanner, player, game);
       System.out.println();
       player1 = game.getPlayer1();
       player2 = game.getPlayer2();
@@ -33,7 +33,7 @@ public class TicTacToeConsole {
     for(int i = 0; i < SIZE*SIZE; i++){
       Board board = game.getBoard();
       printBoard(board, SIZE);
-      System.out.print(player.getName() + ", where do you want to put your " + game.getNextTurn().toString().toLowerCase() + ": ");
+      System.out.print(player.getName() + "(score: " + player.getScore() + ")" + ", where do you want to put your " + game.getNextTurn().toString().toLowerCase() + ": ");
       int n = getInput(scanner, board);
       game.makeMove(n);
       if(game.checkWinner() != ""){
@@ -70,10 +70,11 @@ public class TicTacToeConsole {
 
     return input;
   }
-  private static boolean printResults(String winner, Scanner scanner, Player player) {
+  private static boolean printResults(String winner, Scanner scanner, Player player, TicTacToe game) {
     if(winner != ""){
       System.out.println();
       System.out.println(player.getName() + ", you won this round");
+      game.incrementScore(player);
     }
     else{
       System.out.println("Well this one was a draw, hopefully someone will win next time");

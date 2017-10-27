@@ -20,6 +20,14 @@ public class TicTacToe {
     this.nextTurn = Symbol.CROSS;
   }
 
+  public void incrementScore(Player player){
+    if(player == player1){
+      player1.incrementScore();
+      return;
+    }
+    player2.incrementScore();
+  }
+
   public Player getPlayer1(){
     return player1;
   }
