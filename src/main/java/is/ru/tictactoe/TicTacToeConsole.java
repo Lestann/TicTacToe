@@ -22,7 +22,17 @@ public class TicTacToeConsole {
       System.out.print(player.getName() + ", where do you want to put your " + game.getNextTurn().toString().toLowerCase() + ": ");
       int n = getInput(scanner, board);
       game.makeMove(n);
+      if(game.checkWinner() != ""){
+        break;
+      }
       player = switchPlayer(player1, player2, player);
+    }
+    String winner = game.checkWinner();
+    if(winner != "D"){
+      System.out.println(player.getName() + " , you won this round");
+    }
+    else{
+      System.out.println("This round was a draw");
     }
   }
 
