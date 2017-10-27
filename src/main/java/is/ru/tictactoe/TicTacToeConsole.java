@@ -32,7 +32,9 @@ public class TicTacToeConsole {
       String winner = game.checkWinner();
       continueGame = printResults(winner, scanner, player);
       System.out.println();
-
+      player1 = game.getPlayer1();
+      player2 = game.getPlayer2();
+      player = switchPlayer(player1, player2, player);
       game.resetGame();
     }
   }
