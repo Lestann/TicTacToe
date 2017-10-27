@@ -9,7 +9,7 @@ Verkefnið er hýst á github.com. Það allra fyrsta sem þú þarft er Git. H�
 - [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - [Gradle](https://gradle.org)
 #### Sem gott er að hafa #### 
-- Heroko CLI
+- [Heroko CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 #### Þýðing og keyrsla #### 
 - `gradle build`
 - `gradle run`
