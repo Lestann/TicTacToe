@@ -18,9 +18,9 @@ $(document).ready(function() {
     }).done(function(result) {
       if(result === "true"){
         test.addClass(currentPlayer)
+        switchPlayerTurn();
         // is there a winner?
         checkWinner();
-        switchPlayerTurn();
       }
     });
   });
@@ -48,11 +48,15 @@ function checkWinner() {
     type: 'POST',
     url: '/checkWinner'
   }).done(function(result) {
-    if (result == 'X' || result == 'O')
-      console.log(result + 'won the game')
-
-    if (result == 'D')
+    if (result == 'X' || result == 'O'){
+      alert(result, " won the game");
+      clearBoard();
+    }
+    else if (result == 'D'){
       alert('draw!')
+      clearBoard();
+    }
+
   });
 }
 
@@ -61,4 +65,6 @@ function clearBoard() {
   $('table').find('td').each(function() {
     $(this).removeClass('X').removeClass('O');
   });
+
+  console.log("CLEEEEEEAAAAAR");
 }
