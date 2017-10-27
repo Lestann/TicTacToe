@@ -18,9 +18,8 @@ public class TicTacToeConsole {
     final int SIZE = game.getBoard().SIZE;
     boolean continueGame = true;
     while(continueGame){
-      gameIteration(player1, player2, game, player, SIZE, scanner);
-      String winner = game.checkWinner();
-      continueGame = printResults(winner, scanner, player);
+      String winner = gameIteration(player1, player2, game, player, SIZE, scanner);
+      continueGame = printResults(winner, scanner, player, game);
       System.out.println();
       player1 = game.getPlayer1();
       player2 = game.getPlayer2();
@@ -29,18 +28,21 @@ public class TicTacToeConsole {
     }
   }
 
-  private static void gameIteration(Player player1, Player player2, TicTacToe game, Player player, final int SIZE, Scanner scanner){
+  private static String gameIteration(Player player1, Player player2, TicTacToe game, Player player, final int SIZE, Scanner scanner){
+    String winner = "";
     for(int i = 0; i < SIZE*SIZE; i++){
       Board board = game.getBoard();
       printBoard(board, SIZE);
-      System.out.print(player.getName() + ", where do you want to put your " + game.getNextTurn().toString().toLowerCase() + ": ");
+      System.out.print(player.getName() + "(score: " + player.getScore() + ")" + ", where do you want to put your " + game.getNextTurn().toString().toLowerCase() + ": ");
       int n = getInput(scanner, board);
       game.makeMove(n);
-      if(game.checkWinner() != ""){
-        break;
+      winner = game.checkWinner();
+      if(winner != ""){
+        return winner;
       }
       player = switchPlayer(player1, player2, player);
     }
+    return winner;
   }
 
 
@@ -70,7 +72,7 @@ public class TicTacToeConsole {
 
     return input;
   }
-  private static boolean printResults(String winner, Scanner scanner, Player player) {
+  private static boolean printResults(String winner, Scanner scanner, Player player, TicTacToe game) {
     if(winner != ""){
       System.out.println();
       System.out.println(player.getName() + ", you won this round");

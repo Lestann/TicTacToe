@@ -61,8 +61,10 @@ public class TicTacToe {
 
     if(board.checkWinner(nextTurn.next())){
       if(nextTurn.next() == Symbol.CROSS){
+        incrementScore(nextTurn.next());
         return "X";
       }
+      incrementScore(nextTurn.next());
       return "O";
     }
     else if(board.isFull())
@@ -71,6 +73,15 @@ public class TicTacToe {
     }
     return "";
 
+  }
+
+  private void incrementScore(Symbol symbol){
+    if(player1.getSymbol() == symbol){
+      player1.incrementScore();
+      return;
+    }
+    player2.incrementScore();
+    return;
   }
 
   public boolean resetGame(){
