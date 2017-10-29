@@ -1,31 +1,74 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  margin: 0 auto;
+  height: 900px;
+}
+
+.container h1 {
+  text-align: center;
+  font-size: 35px;
+}
 
 #board {
   margin: 0 auto;
   padding: 0;
   width: 300px;
   height: 300px;
-  border: 1px solid black;
-
 }
 
-#board > li {
-  list-style: none;
-  float: left;
-  overflow: hidden;
-  text-decoration:none;
+.first-row {
+  border: 1px solid red;
+  padding: 5px;
+}
+
+table td {
   width: 100px;
   height: 100px;
-  background: #f1f1f1;
-  border: 1px solid #ccc;
-  border-right: 1px solid #fff;
   cursor: pointer;
-  text-transform: uppercase;
   text-align: center;
-  padding-top: 20px;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  background-color: #F2F3F4;
 }
 
-#board > li:hover {
-  background: red;
+table td:before {
+  font-size: 80px;
 }
+
+table td.X:before {
+  content: "X";
+  color: #58D68D;
+}
+
+
+table td.O:before {
+  content: "O";
+  color: #EC7063;
+}
+
+table td:hover {
+  opacity: 0.7;
+}
+
+
+.new-game {
+  margin-top: 20px;
+  height: 30px;
+  width: 100px;
+  border: 0;
+  outline: 0;
+  background-color: #7DCEA0;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+

@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>TicTacToe</title>
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="TicTacToe.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-
-  <h1>Welcome to TicTacToe</h1>
   <div class="container">
-
-    <ul id="board">
-      <!-- first row -->
-      <li data-position="0,0"></li>
-      <li data-position="0,1"></li>
-      <li data-position="0,2"></li>
-      <!-- second row -->
-      <li data-position="1,0"></li>
-      <li data-position="1,1"></li>
-      <li data-position="1,2"></li>
-      <!-- third row -->
-      <li data-position="2,0"></li>
-      <li data-position="2,1"></li>
-      <li data-position="2,2"></li>
-    </ul>
+    <table id="board">
+      <tr>
+        <td id="1"></td>
+        <td id="2"></td>
+        <td id="3"></td>
+      </tr>
+      <tr>
+        <td id="4"></td>
+        <td id="5"></td>
+        <td id="6"></td>
+      </tr>
+      <tr>
+        <td id="7"></td>
+        <td id="8"></td>
+        <td id="9"></td>
+      </tr>
+    </table>
+    <span>
+        <p id="player1symbol"></p>
+        <span id="player1"></span>
+    <span id="player1Score"></span>
+    </span>
+    <span>
+        <p id="player2symbol"></p>
+        <span id="player2"></span>
+    <span id="player2Score"></span>
+    </span>
+    </br>
+    <button id="newGame" class="new-game">New game</button>
   </div>
 </body>
+
 </html>
