@@ -114,4 +114,14 @@ public class BoardTest {
     Board board = new Board();
     assertEquals(3, board.getSize());
   }
+
+  @Test
+  public void testGetBoard(){
+    Board board = new Board();
+    board.changeBoard(Symbol.CROSS, 1);
+    board.changeBoard(Symbol.CIRCLE, 2);
+    board.changeBoard(Symbol.CROSS, 3);
+    char[][] test = {{'X','O','X'},{'4','5','6'},{'7','8','9'}};
+    assertEquals(test, board.getBoard());
+  }
 }
