@@ -43,4 +43,11 @@ public class TicTacToeTest {
     game.makeMove(6); //X
     assertEquals("D", game.checkWinner());
   }
+
+  @Test
+  public void testNewRound(){
+    TicTacToe game = new TicTacToe();
+    game.newRound();
+    assertEquals(Symbol.CIRCLE, game.getPlayer1().getSymbol());
+  }
 }
