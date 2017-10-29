@@ -50,4 +50,22 @@ public class TicTacToeTest {
     game.newRound();
     assertEquals(Symbol.CIRCLE, game.getPlayer1().getSymbol());
   }
+
+  @Test
+  public void testResetGame(){
+    TicTacToe game = new TicTacToe();
+    game.makeMove(1); //X
+    game.makeMove(2); //O
+    game.makeMove(3); //X
+    game.makeMove(7); //O
+    game.makeMove(8); //X
+    game.makeMove(9); //O
+    game.makeMove(4); //X
+    game.makeMove(5); //O
+    game.makeMove(6); //X
+    game.newRound();
+    game.resetGame();
+    assertEquals(Symbol.CROSS, game.getPlayer1().getSymbol());
+    assertEquals(0, game.getPlayer1().getScore());
+  }
 }
