@@ -75,6 +75,8 @@ function resetGame() {
 
   currentPlayer = 'X'
 
+  player1.score = 0;
+  player2.score = 0;
   console.log(player1)
   console.log(player2)
 }
@@ -93,8 +95,6 @@ function newRound() {
   })
 
   currentPlayer = 'X'
-  player1.score = 0;
-  player2.score = 0;
 }
 
 function switchPlayerTurn() {
@@ -112,10 +112,10 @@ function checkWinner() {
     if (result == 'X' || result == 'O') {
       incrementScore(result)
       console.log(result + ' won the game')
-      resetGame()
+      newRound()
     }
     else if (result == 'D') {
-      resetGame()
+      newRound()
     }
   })
 }
