@@ -11,8 +11,8 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-//mainClassName = "is.ru.tictactoe.TicTacToeWeb"
-mainClassName = "is.ru.tictactoe.TicTacToeConsole"
+mainClassName = "is.ru.tictactoe.TicTacToeWeb"
+//mainClassName = "is.ru.tictactoe.TicTacToeConsole"
 
 run{
   standardInput = System.in
@@ -22,6 +22,9 @@ repositories {
     // Use 'jcenter' for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+}
+sourceSets {
+  selenium
 }
 
 // In this section you declare the dependencies for your production and test code
@@ -42,9 +45,24 @@ dependencies {
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
+
+    seleniumCompile 'junit:junit:4.12'
+    seleniumCompile 'org.seleniumhq.selenium:selenium-java:3.6.0'
 }
 
 
 task stage (
     dependsOn: ['installDist']
 )
+
+
+test.useTestNG()
+
+task selenium(type: Test, dependsOn: installDist) {
+  testClassesDir = sourceSets.selenium.output.classesDir
+  classpath = sourceSets.selenium.runtimeClasspath
+
+  doFirst {
+    'build/install/TicTacToe/bin/TicTacToe.bat'.execute()
+  }
+}
