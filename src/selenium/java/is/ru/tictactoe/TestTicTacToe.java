@@ -20,6 +20,7 @@ public class TestTicTacToe extends SeleniumTestWrapper {
   public void testFirstRowWin() throws Exception {
     driver.get(baseUrl);
     WebElement td1 = driver.findElement(By.id("1"));
+    Thread.sleep(1000);
     WebElement td2 = driver.findElement(By.id("2"));
     WebElement td3 = driver.findElement(By.id("3"));
     WebElement td7 = driver.findElement(By.id("7"));

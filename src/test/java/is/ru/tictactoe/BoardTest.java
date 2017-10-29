@@ -107,6 +107,11 @@ public class BoardTest {
     board.changeBoard(Symbol.CROSS, 8);
     board.changeBoard(Symbol.CIRCLE, 9);
     assertEquals(true, board.isFull());
+  }
 
+  @Test
+  public void testGetSize(){
+    Board board = new Board();
+    assertEquals(3, board.getSize());
   }
 }
