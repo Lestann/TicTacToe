@@ -20,6 +20,7 @@ public class TicTacToe {
     this.nextTurn = Symbol.CROSS;
   }
 
+  
   public Player getPlayer1(){
     return player1;
   }

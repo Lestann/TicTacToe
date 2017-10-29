@@ -22,42 +22,31 @@ public class TestTicTacToe extends SeleniumTestWrapper {
     WebElement td1 = driver.findElement(By.id("1"));
     WebElement td2 = driver.findElement(By.id("2"));
     WebElement td3 = driver.findElement(By.id("3"));
-    WebElement td4 = driver.findElement(By.id("4"));
-    WebElement td5 = driver.findElement(By.id("5"));
-    WebElement td6 = driver.findElement(By.id("6"));
     WebElement td7 = driver.findElement(By.id("7"));
     WebElement td8 = driver.findElement(By.id("8"));
-    WebElement td9 = driver.findElement(By.id("9"));
     String p1Score = driver.findElement(By.id("player1Score")).getText();
-    JavascriptExecutor executor = (JavascriptExecutor)driver;
-    executor.executeScript("arguments[0].click();", td1);
-    executor.executeScript("arguments[0].click();", td7);
-    executor.executeScript("arguments[0].click();", td2);
-    executor.executeScript("arguments[0].click();", td8);
-    executor.executeScript("arguments[0].click();", td3);
-
+    td1.click();
+    td7.click();
+    td2.click();
+    td8.click();
+    td3.click();
     String newp1Score = driver.findElement(By.id("player1Score")).getText();
     assertEquals(Integer.parseInt(newp1Score), Integer.parseInt(p1Score)+1);// driver.findElement(By.id("player1Score")).getText());
   }
   @Test
   public void testSecondRowWin() throws Exception {
     driver.get(baseUrl);
-    WebElement td1 = driver.findElement(By.id("1"));
-    WebElement td2 = driver.findElement(By.id("2"));
-    WebElement td3 = driver.findElement(By.id("3"));
     WebElement td4 = driver.findElement(By.id("4"));
     WebElement td5 = driver.findElement(By.id("5"));
     WebElement td6 = driver.findElement(By.id("6"));
     WebElement td7 = driver.findElement(By.id("7"));
     WebElement td8 = driver.findElement(By.id("8"));
-    WebElement td9 = driver.findElement(By.id("9"));
     String p1Score = driver.findElement(By.id("player1Score")).getText();
-    JavascriptExecutor executor = (JavascriptExecutor)driver;
-    executor.executeScript("arguments[0].click();", td4);
-    executor.executeScript("arguments[0].click();", td7);
-    executor.executeScript("arguments[0].click();", td5);
-    executor.executeScript("arguments[0].click();", td8);
-    executor.executeScript("arguments[0].click();", td6);
+    td4.click();
+    td7.click();
+    td5.click();
+    td8.click();
+    td6.click();
     String newp1Score = driver.findElement(By.id("player1Score")).getText();
     assertEquals(Integer.parseInt(newp1Score), Integer.parseInt(p1Score)+1);
   }
@@ -66,20 +55,16 @@ public class TestTicTacToe extends SeleniumTestWrapper {
     driver.get(baseUrl);
     WebElement td1 = driver.findElement(By.id("1"));
     WebElement td2 = driver.findElement(By.id("2"));
-    WebElement td3 = driver.findElement(By.id("3"));
-    WebElement td4 = driver.findElement(By.id("4"));
-    WebElement td5 = driver.findElement(By.id("5"));
-    WebElement td6 = driver.findElement(By.id("6"));
     WebElement td7 = driver.findElement(By.id("7"));
     WebElement td8 = driver.findElement(By.id("8"));
     WebElement td9 = driver.findElement(By.id("9"));
     String p1Score = driver.findElement(By.id("player1Score")).getText();
-    JavascriptExecutor executor = (JavascriptExecutor)driver;
-    executor.executeScript("arguments[0].click();", td7);
-    executor.executeScript("arguments[0].click();", td1);
-    executor.executeScript("arguments[0].click();", td8);
-    executor.executeScript("arguments[0].click();", td2);
-    executor.executeScript("arguments[0].click();", td9);
+    td7.click();
+    td1.click();
+    td8.click();
+    td2.click();
+    td9.click();
+
     String newp1Score = driver.findElement(By.id("player1Score")).getText();
     assertEquals(Integer.parseInt(newp1Score), Integer.parseInt(p1Score)+1);
   }
@@ -96,16 +81,16 @@ public class TestTicTacToe extends SeleniumTestWrapper {
     WebElement td8 = driver.findElement(By.id("8"));
     WebElement td9 = driver.findElement(By.id("9"));
     String p1Score = driver.findElement(By.id("player1Score")).getText();
-    JavascriptExecutor executor = (JavascriptExecutor)driver;
-    executor.executeScript("arguments[0].click();", td1);
-    executor.executeScript("arguments[0].click();", td2);
-    executor.executeScript("arguments[0].click();", td3);
-    executor.executeScript("arguments[0].click();", td7);
-    executor.executeScript("arguments[0].click();", td8);
-    executor.executeScript("arguments[0].click();", td9);
-    executor.executeScript("arguments[0].click();", td4);
-    executor.executeScript("arguments[0].click();", td5);
-    executor.executeScript("arguments[0].click();", td6);
+    td1.click();
+    td2.click();
+    td3.click();
+    td7.click();
+    td8.click();
+    td9.click();
+    td4.click();
+    td5.click();
+    td6.click();
+
     String newp1Score = driver.findElement(By.id("player1Score")).getText();
     assertEquals(Integer.parseInt(newp1Score), Integer.parseInt(p1Score));
   }
@@ -115,20 +100,16 @@ public class TestTicTacToe extends SeleniumTestWrapper {
     WebElement td1 = driver.findElement(By.id("1"));
     WebElement td2 = driver.findElement(By.id("2"));
     WebElement td3 = driver.findElement(By.id("3"));
-    WebElement td4 = driver.findElement(By.id("4"));
     WebElement td5 = driver.findElement(By.id("5"));
-    WebElement td6 = driver.findElement(By.id("6"));
-    WebElement td7 = driver.findElement(By.id("7"));
     WebElement td8 = driver.findElement(By.id("8"));
     WebElement td9 = driver.findElement(By.id("9"));
     String p2Score = driver.findElement(By.id("player2Score")).getText();
-    JavascriptExecutor executor = (JavascriptExecutor)driver;
-    executor.executeScript("arguments[0].click();", td2);
-    executor.executeScript("arguments[0].click();", td1);
-    executor.executeScript("arguments[0].click();", td3);
-    executor.executeScript("arguments[0].click();", td5);
-    executor.executeScript("arguments[0].click();", td8);
-    executor.executeScript("arguments[0].click();", td9);
+    td2.click();
+    td1.click();
+    td3.click();
+    td5.click();
+    td8.click();
+    td9.click();
     String newp2Score = driver.findElement(By.id("player2Score")).getText();
     assertEquals(Integer.parseInt(newp2Score), Integer.parseInt(p2Score) + 1);
   }
@@ -138,19 +119,31 @@ public class TestTicTacToe extends SeleniumTestWrapper {
     WebElement td1 = driver.findElement(By.id("1"));
     WebElement td2 = driver.findElement(By.id("2"));
     WebElement td3 = driver.findElement(By.id("3"));
-    WebElement td4 = driver.findElement(By.id("4"));
     WebElement td5 = driver.findElement(By.id("5"));
-    WebElement td6 = driver.findElement(By.id("6"));
     WebElement td7 = driver.findElement(By.id("7"));
-    WebElement td8 = driver.findElement(By.id("8"));
-    WebElement td9 = driver.findElement(By.id("9"));
     String p1Score = driver.findElement(By.id("player1Score")).getText();
-    JavascriptExecutor executor = (JavascriptExecutor)driver;
-    executor.executeScript("arguments[0].click();", td3);
-    executor.executeScript("arguments[0].click();", td1);
-    executor.executeScript("arguments[0].click();", td5);
-    executor.executeScript("arguments[0].click();", td2);
-    executor.executeScript("arguments[0].click();", td7);
+    td3.click();
+    td1.click();
+    td5.click();
+    td2.click();
+    td7.click();
+    String newp1Score = driver.findElement(By.id("player1Score")).getText();
+    assertEquals(Integer.parseInt(newp1Score), Integer.parseInt(p1Score) + 1);
+  }
+  @Test
+  public void testMiddleVertical() throws Exception {
+    driver.get(baseUrl);
+    WebElement td1 = driver.findElement(By.id("1"));
+    WebElement td2 = driver.findElement(By.id("2"));
+    WebElement td3 = driver.findElement(By.id("3"));
+    WebElement td5 = driver.findElement(By.id("5"));
+    WebElement td8 = driver.findElement(By.id("8"));
+    String p1Score = driver.findElement(By.id("player1Score")).getText();
+    td2.click();
+    td1.click();
+    td5.click();
+    td3.click();
+    td8.click();
     String newp1Score = driver.findElement(By.id("player1Score")).getText();
     assertEquals(Integer.parseInt(newp1Score), Integer.parseInt(p1Score) + 1);
   }
@@ -161,39 +154,29 @@ public class TestTicTacToe extends SeleniumTestWrapper {
     WebElement td2 = driver.findElement(By.id("2"));
     WebElement td3 = driver.findElement(By.id("3"));
     WebElement td4 = driver.findElement(By.id("4"));
-    WebElement td5 = driver.findElement(By.id("5"));
-    WebElement td6 = driver.findElement(By.id("6"));
     WebElement td7 = driver.findElement(By.id("7"));
-    WebElement td8 = driver.findElement(By.id("8"));
-    WebElement td9 = driver.findElement(By.id("9"));
     String p1Score = driver.findElement(By.id("player1Score")).getText();
-    JavascriptExecutor executor = (JavascriptExecutor)driver;
-    executor.executeScript("arguments[0].click();", td1);
-    executor.executeScript("arguments[0].click();", td2);
-    executor.executeScript("arguments[0].click();", td4);
-    executor.executeScript("arguments[0].click();", td3);
-    executor.executeScript("arguments[0].click();", td7);
+    td1.click();
+    td2.click();
+    td4.click();
+    td3.click();
+    td7.click();
     String newp1Score = driver.findElement(By.id("player1Score")).getText();
     assertEquals(Integer.parseInt(newp1Score), Integer.parseInt(p1Score) + 1);
   }
-  /*@Test
+  @Test
   public void testNewGame() throws Exception {
     driver.get(baseUrl);
     WebElement td1 = driver.findElement(By.id("1"));
     WebElement td2 = driver.findElement(By.id("2"));
     WebElement td3 = driver.findElement(By.id("3"));
     WebElement td4 = driver.findElement(By.id("4"));
-    WebElement td5 = driver.findElement(By.id("5"));
-    WebElement td6 = driver.findElement(By.id("6"));
     WebElement td7 = driver.findElement(By.id("7"));
-    WebElement td8 = driver.findElement(By.id("8"));
-    WebElement td9 = driver.findElement(By.id("9"));
-    JavascriptExecutor executor = (JavascriptExecutor)driver;
-    executor.executeScript("arguments[0].click();", td1);
-    executor.executeScript("arguments[0].click();", td2);
-    executor.executeScript("arguments[0].click();", td4);
-    executor.executeScript("arguments[0].click();", td3);
-    executor.executeScript("arguments[0].click();", td7);
+    td1.click();
+    td2.click();
+    td4.click();
+    td3.click();
+    td7.click();
     String newp1Score = driver.findElement(By.id("player1Score")).getText();
     WebElement newGame = driver.findElement(By.id("newGame"));
     newGame.click();
@@ -203,5 +186,6 @@ public class TestTicTacToe extends SeleniumTestWrapper {
     String p2Score = driver.findElement(By.id("player2Score")).getText();
     assertEquals(0, Integer.parseInt(p1Score));
     assertEquals(0, Integer.parseInt(p2Score));
-  }*/
+  }
+
 }
