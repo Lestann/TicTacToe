@@ -16,3 +16,6 @@ Verkefnið er hýst á github.com. Það allra fyrsta sem þú þarft er Git. H�
 - `gradle build`
 - `gradle run`
 - `gradle selenium`
+
+Til að keyra selenium prófunina þarf af vera með chrome og chromedriverinn setta í PATH. Síðan keyriru skipunina `gradle selenium`
+í PowerShell.
