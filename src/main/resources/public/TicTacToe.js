@@ -1,13 +1,15 @@
 let currentPlayer = 'X' // X always starts
+let currentTurn = 'player1'
+let gameIsFinished = false;
 
 let player1 = {
-  name: "Player 1",
+  name: 'Player 1',
   symbol: 'X',
   score: 0
 }
 
 let player2 = {
-  name: "Player 2",
+  name: 'Player 2',
   symbol: 'O',
   score: 0
 }
@@ -17,40 +19,46 @@ $(document).ready(function() {
   // Make sure the board is clean
   clearBoard();
 
+  player1.name = prompt('Enter the name for Player 1', 'Player 1')
+  player2.name = prompt('Enter the name for Player 2', 'Player 2')
+
   // click listener for each td
   $('td').click(function() {
-    let id = $(this).attr('id')
-    var td = $(this)
-    $.ajax({
-      type: 'POST',
-      url: '/makeMove',
-      data: "id=" + id
-    }).done(function(result) {
-      if(result === "true") {
-        console.log("Player " + currentPlayer + " made a move on " + id)
-        td.addClass(currentPlayer)
-        switchPlayerTurn()
-        // is there a winner?
-        checkWinner()
-      }
-    });
+    if (!gameIsFinished) {
+      let id = $(this).attr('id')
+      var td = $(this)
+      $.ajax({
+        type: 'POST',
+        url: '/makeMove',
+        data: "id=" + id
+      }).done(function(result) {
+        if(result === "true") {
+          console.log("Player " + currentPlayer + " made a move on " + id)
+          td.addClass(currentPlayer)
+          switchPlayerTurn()
+          // is there a winner?
+          checkWinner()
+        }
+      });
+    }
   });
 
   window.onunload = resetGame();
 
   // new game
-  $('.new-game').click(function() {
-    if (confirm('Are you sure you want to start a new game?')) {
-      console.log('NEW GAME!')
-      player1.score = 0;
-      player2.score = 0;
-      resetGame()
-      // here I need to call some reset game API call
+  $('#newGame').click(function() {
+    $('#newGame').addClass('hidden')
+    gameIsFinished = false
+    if (currentTurn == 'player1') {
+      currentTurn = 'player2'
+    } else if (currentTurn == 'player2') {
+      currentTurn = 'player1'
     }
+    newRound()
   });
 });
 
-function getNames(){
+function getNames() {
   $.ajax({
     type: 'GET',
     url: '/getNames'
@@ -60,22 +68,19 @@ function getNames(){
 }
 
 function resetGame() {
-  console.log('Reseting the game!')
   $.ajax({
     type: 'POST',
     url: '/resetGame'
   }).done(function(result) {
       clearBoard()
-      $('#player1symbol').text('Currently playing as ' + player1.symbol)
-      $('#player1').text(player1.name + ': ')
-      $('#player2symbol').text('Currently playing as ' + player2.symbol)
-      $('#player2').text(player2.name + ': ')
+      $('#player1').text(player1.name + ' (' + player1.symbol + ')')
+      $('#player2').text(player2.name + ' (' + player2.symbol + ')')
       $('#player1Score').text(player1.score)
       $('#player2Score').text(player2.score)
-
   })
 
   currentPlayer = 'X'
+  currentTurn = 'player1'
 
   player1.score = 0;
   player2.score = 0;
@@ -88,12 +93,11 @@ function newRound() {
     type: 'POST',
     url: '/newRound'
   }).done(function(result) {
-      clearBoard()
-      $('#player1').text(player1.name + ': ')
-      $('#player2').text(player2.name + ': ')
-      $('#player1Score').text(player1.score)
-      $('#player2Score').text(player2.score)
+    clearBoard()
+    $('#player1').text(player1.name + ' (' + player1.symbol + ')')
+    $('#player2').text(player2.name + ' (' + player2.symbol + ')')
 
+    switchTextColors()
   })
 
   currentPlayer = 'X'
@@ -106,6 +110,16 @@ function switchPlayerTurn() {
     currentPlayer = 'X'
 }
 
+function switchTextColors() {
+  if (currentTurn == 'player1') {
+    $('#player1').addClass('currentMove')
+    $('#player2').removeClass('currentMove')
+  } else if (currentTurn == 'player2') {
+    $('#player2').addClass('currentMove')
+    $('#player1').removeClass('currentMove')
+  }
+}
+
 function checkWinner() {
   $.ajax({
     type: 'POST',
@@ -114,13 +128,24 @@ function checkWinner() {
     if (result == 'X' || result == 'O') {
       incrementScore(result)
       console.log(result + ' won the game')
-      newRound()
+      gameIsFinished = true
+      $('#player1Score').text(player1.score)
+      $('#player2Score').text(player2.score)
+      $('#newGame').removeClass('hidden')
     }
     else if (result == 'D') {
-      newRound()
+      console.log('DRAW!')
+      gameIsFinished = true
+      let temp = player1.symbol
+      player1.symbol = player2.symbol
+      player2.symbol = temp
+      $('#player1Score').text(player1.score)
+      $('#player2Score').text(player2.score)
+      $('#newGame').removeClass('hidden')
     }
   })
 }
+
 
 function incrementScore(player) {
   if (player1.symbol == player) {
@@ -133,7 +158,6 @@ function incrementScore(player) {
   player2.symbol = temp
 }
 
-// Clears the table board
 function clearBoard() {
   console.log('clearing the board')
   $('table').find('td').each(function() {
