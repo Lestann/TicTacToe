@@ -1,11 +1,13 @@
 let currentPlayer = 'X' // X always starts
 
 let player1 = {
+  name: "player1",
   symbol: 'X',
   score: 0
 }
 
 let player2 = {
+  name: "player2",
   symbol: 'O',
   score: 0
 }
@@ -19,7 +21,6 @@ $(document).ready(function() {
   $('td').click(function() {
     let id = $(this).attr('id')
     var td = $(this)
-
     $.ajax({
       type: 'POST',
       url: '/makeMove',
@@ -47,6 +48,15 @@ $(document).ready(function() {
   });
 });
 
+function getNames(){
+  $.ajax({
+    type: 'GET',
+    url: '/getNames'
+  }).done(function(result) {
+    console.log(result)
+  })
+}
+
 function resetGame() {
   console.log('Reseting the game!')
   $.ajax({
@@ -54,6 +64,11 @@ function resetGame() {
     url: '/resetGame'
   }).done(function(result) {
       clearBoard()
+      $('#player1').text(player1.name + ': ')
+      $('#player2').text(player2.name + ': ')
+      $('#player1Score').text(player1.score)
+      $('#player2Score').text(player2.score)
+
   })
 
   currentPlayer = 'X'
@@ -92,7 +107,6 @@ function incrementScore(player) {
   } else {
     player2.score++;
   }
-
   let temp = player1.symbol
   player1.symbol = player2.symbol
   player2.symbol = temp
