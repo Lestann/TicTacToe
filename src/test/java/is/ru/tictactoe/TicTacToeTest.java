@@ -6,18 +6,6 @@ import static org.junit.Assert.*;
 public class TicTacToeTest {
 
   @Test
-  public void testCorrectGridSize() {
-    Board board = new Board();
-    assertEquals(9, board.getSize() * 3);
-  }
-
-  @Test
-  public void testIncorrectGridSize() {
-    Board board = new Board();
-    assertNotEquals(1337, board.getSize());
-  }
-
-  @Test
   public void testMakValidMove(){
     TicTacToe game = new TicTacToe();
     assertEquals(true, game.makeMove(1));
@@ -54,5 +42,30 @@ public class TicTacToeTest {
     game.makeMove(5); //O
     game.makeMove(6); //X
     assertEquals("D", game.checkWinner());
+  }
+
+  @Test
+  public void testNewRound(){
+    TicTacToe game = new TicTacToe();
+    game.newRound();
+    assertEquals(Symbol.CIRCLE, game.getPlayer1().getSymbol());
+  }
+
+  @Test
+  public void testResetGame(){
+    TicTacToe game = new TicTacToe();
+    game.makeMove(1); //X
+    game.makeMove(2); //O
+    game.makeMove(3); //X
+    game.makeMove(7); //O
+    game.makeMove(8); //X
+    game.makeMove(9); //O
+    game.makeMove(4); //X
+    game.makeMove(5); //O
+    game.makeMove(6); //X
+    game.newRound();
+    game.resetGame();
+    assertEquals(Symbol.CROSS, game.getPlayer1().getSymbol());
+    assertEquals(0, game.getPlayer1().getScore());
   }
 }

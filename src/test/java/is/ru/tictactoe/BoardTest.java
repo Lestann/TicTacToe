@@ -65,7 +65,7 @@ public class BoardTest {
   }
 
   @Test
-  public void checkValidMove() {
+  public void testCheckValidMove() {
     Board board = new Board();
     assertEquals(false, board.checkValidMove(20));
     assertEquals(true, board.checkValidMove(8));
@@ -107,6 +107,34 @@ public class BoardTest {
     board.changeBoard(Symbol.CROSS, 8);
     board.changeBoard(Symbol.CIRCLE, 9);
     assertEquals(true, board.isFull());
-
   }
+
+  @Test
+  public void testGetSize(){
+    Board board = new Board();
+    assertEquals(3, board.getSize());
+  }
+
+  @Test
+  public void testGetBoard(){
+    Board board = new Board();
+    board.changeBoard(Symbol.CROSS, 1);
+    board.changeBoard(Symbol.CIRCLE, 2);
+    board.changeBoard(Symbol.CROSS, 3);
+    char[][] test = {{'X','O','X'},{'4','5','6'},{'7','8','9'}};
+    assertEquals(test, board.getBoard());
+  }
+
+  @Test
+  public void testCorrectGridSize() {
+    Board board = new Board();
+    assertEquals(9, board.getSize() * 3);
+  }
+
+  @Test
+  public void testIncorrectGridSize() {
+    Board board = new Board();
+    assertNotEquals(1337, board.getSize());
+  }
+
 }

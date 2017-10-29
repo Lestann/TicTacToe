@@ -20,6 +20,7 @@ public class TestTicTacToe extends SeleniumTestWrapper {
   public void testFirstRowWin() throws Exception {
     driver.get(baseUrl);
     WebElement td1 = driver.findElement(By.id("1"));
+    Thread.sleep(1000);
     WebElement td2 = driver.findElement(By.id("2"));
     WebElement td3 = driver.findElement(By.id("3"));
     WebElement td7 = driver.findElement(By.id("7"));
@@ -187,5 +188,28 @@ public class TestTicTacToe extends SeleniumTestWrapper {
     assertEquals(0, Integer.parseInt(p1Score));
     assertEquals(0, Integer.parseInt(p2Score));
   }
-
+  @Test
+  public void testMultibleClicks() throws Exception {
+    driver.get(baseUrl);
+    WebElement td1 = driver.findElement(By.id("1"));
+    WebElement td2 = driver.findElement(By.id("2"));
+    WebElement td3 = driver.findElement(By.id("3"));
+    WebElement td4 = driver.findElement(By.id("4"));
+    WebElement td7 = driver.findElement(By.id("7"));
+    String p1Score = driver.findElement(By.id("player1Score")).getText();
+    td1.click();
+    td2.click();
+    td2.click();
+    td2.click();
+    td2.click();
+    td1.click();
+    td1.click();
+    td4.click();
+    td3.click();
+    td1.click();
+    td4.click();
+    td7.click();
+    String newp1Score = driver.findElement(By.id("player1Score")).getText();
+    assertEquals(Integer.parseInt(newp1Score), Integer.parseInt(p1Score) + 1);
+  }
 }

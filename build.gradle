@@ -55,6 +55,11 @@ task stage (
     dependsOn: ['installDist']
 )
 
+jar {
+  manifest{
+    attributes 'Main-Class': 'is.ru.tictactoe.TicTacToeConsole'
+  }
+}
 
 test.useTestNG()
 
