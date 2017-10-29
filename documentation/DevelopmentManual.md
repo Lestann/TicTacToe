@@ -10,6 +10,12 @@ Verkefnið er hýst á github.com. Það allra fyrsta sem þú þarft er Git. H�
 - [Gradle](https://gradle.org)
 #### Sem gott er að hafa #### 
 - [Heroko CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+- [Google Chrome](https://www.google.com/chrome/browser/desktop/index.html)
+- [Selenium chromedriver](https://chromedriver.storage.googleapis.com/index.html?path=2.33/)
 #### Þýðing og keyrsla #### 
 - `gradle build`
 - `gradle run`
+- `gradle selenium`
+
+Til að keyra selenium prófunina þarf af vera með chrome og chromedriverinn setta í PATH. Síðan keyriru skipunina `gradle selenium`
+í PowerShell.
