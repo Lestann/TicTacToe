@@ -42,6 +42,8 @@ $(document).ready(function() {
   $('.new-game').click(function() {
     if (confirm('Are you sure you want to start a new game?')) {
       console.log('NEW GAME!')
+      player1.score = 0;
+      player2.score = 0;
       resetGame()
       // here I need to call some reset game API call
     }
@@ -75,8 +77,26 @@ function resetGame() {
 
   currentPlayer = 'X'
 
+  player1.score = 0;
+  player2.score = 0;
   console.log(player1)
   console.log(player2)
+}
+
+function newRound() {
+  $.ajax({
+    type: 'POST',
+    url: '/newRound'
+  }).done(function(result) {
+      clearBoard()
+      $('#player1').text(player1.name + ': ')
+      $('#player2').text(player2.name + ': ')
+      $('#player1Score').text(player1.score)
+      $('#player2Score').text(player2.score)
+
+  })
+
+  currentPlayer = 'X'
 }
 
 function switchPlayerTurn() {
@@ -94,11 +114,10 @@ function checkWinner() {
     if (result == 'X' || result == 'O') {
       incrementScore(result)
       console.log(result + ' won the game')
-      resetGame()
+      newRound()
     }
     else if (result == 'D') {
-      alert('draw!')
-      resetGame()
+      newRound()
     }
   })
 }

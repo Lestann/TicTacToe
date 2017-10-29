@@ -26,6 +26,8 @@ public class TicTacToeWeb implements SparkApplication {
     post("/checkWinner", (req, res) -> game.checkWinner());
     post("/makeMove", (req, res) -> game.makeMove(Integer.parseInt(req.queryParams("id"))));
     post("/resetGame", (req, res) -> game.resetGame());
+    post("/newRound", (req, res) -> game.newRound());
+
     // post("/restart", (req, res) -> game.restartGame());
   }
 }

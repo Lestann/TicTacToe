@@ -27,6 +27,10 @@ public class Player {
     this.symbol = symbol;
   }
 
+  public void setScore(int score){
+    this.score = score;
+  }
+
   public void setName(String name) {
     this.name = name;
   }
