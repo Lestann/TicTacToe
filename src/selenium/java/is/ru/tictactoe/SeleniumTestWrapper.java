@@ -16,11 +16,12 @@ public abstract class SeleniumTestWrapper {
   public static void openBrowser() {
     driver = new ChromeDriver();
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-;
+
+    port = System.getenv("PORT");
     if (port == null) {
         port = "4567";
     }
-    baseUrl = "https://tictactoe-lestann-develop.herokuapp.com/";
+    baseUrl = "http://localhost:" + port;
   }
 
   @AfterClass
