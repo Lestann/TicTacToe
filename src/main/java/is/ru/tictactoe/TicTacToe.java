@@ -83,13 +83,19 @@ public class TicTacToe {
     player2.incrementScore();
     return;
   }
-
-  public boolean resetGame(){
+  public boolean newRound(){
     board = new Board();
     player1.setSymbol(player1.getSymbol().next());
     player2.setSymbol(player2.getSymbol().next());
     nextTurn = Symbol.CROSS;
+    return true;
+  }
 
+  public boolean resetGame(){
+    board = new Board();
+    player1.setScore(0);
+    player2.setScore(0);
+    nextTurn = Symbol.CROSS;
     return true;
   }
 }

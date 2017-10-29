@@ -24,7 +24,7 @@ public class TicTacToeConsole {
       player1 = game.getPlayer1();
       player2 = game.getPlayer2();
       player = switchPlayer(player1, player2, player);
-      game.resetGame();
+      game.newRound();
     }
   }
 
