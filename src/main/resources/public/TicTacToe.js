@@ -1,13 +1,13 @@
 let currentPlayer = 'X' // X always starts
 
 let player1 = {
-  name: "player1",
+  name: "Player 1",
   symbol: 'X',
   score: 0
 }
 
 let player2 = {
-  name: "player2",
+  name: "Player 2",
   symbol: 'O',
   score: 0
 }
@@ -66,7 +66,9 @@ function resetGame() {
     url: '/resetGame'
   }).done(function(result) {
       clearBoard()
+      $('#player1symbol').text('Currently playing as ' + player1.symbol)
       $('#player1').text(player1.name + ': ')
+      $('#player2symbol').text('Currently playing as ' + player2.symbol)
       $('#player2').text(player2.name + ': ')
       $('#player1Score').text(player1.score)
       $('#player2Score').text(player2.score)
