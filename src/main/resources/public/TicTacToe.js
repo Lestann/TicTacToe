@@ -95,7 +95,6 @@ function checkWinner() {
       resetGame()
     }
     else if (result == 'D') {
-      alert('draw!')
       resetGame()
     }
   })
